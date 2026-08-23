@@ -1,1 +1,426 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+  <meta
+    name="description"
+    content="Teamarbeit zu besonderen Notfällen in Bildungs- und Betreuungseinrichtungen für Kinder"
+  >
+
+  <title>Teamarbeit – Besondere Notfälle</title>
+
+  <style>
+    :root {
+      --star-red: #b00020;
+      --text: #222;
+      --muted: #5f6670;
+      --page: #f2f4f7;
+      --card: #ffffff;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 20px;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    .karte {
+      max-width: 800px;
+      margin: 30px auto;
+      padding: 30px;
+      background: var(--card);
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .logo img {
+      width: min(80%, 280px);
+      height: auto;
+    }
+
+    h1 {
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.25;
+    }
+
+    .untertitel {
+      margin: 0 0 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bereich {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.65;
+    }
+
+    .fall {
+      background: var(--case);
+    }
+
+    .zusatz {
+      background: var(--extra);
+    }
+
+    h2,
+    h3 {
+      margin: 0 0 12px;
+    }
+
+    #situation-1,
+    #situation-2,
+    #zusatzfrage,
+    #anpassungsaufgabe {
+      margin: 0;
+    }
+
+    #anpassungsaufgabe {
+      margin-top: 18px;
+    }
+
+    .anpassungs-ueberschrift {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .karte {
+        margin: 10px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .bereich {
+        padding: 18px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="karte">
+
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
+
+    <h1>Teamarbeit „Besondere Notfälle“</h1>
+
+    <p class="untertitel">
+      Erste Hilfe in Bildungs- und Betreuungseinrichtungen für Kinder
+    </p>
+
+    <section class="bereich fall" aria-labelledby="fall-titel-1">
+      <h2 id="fall-titel-1">Fallsituation 1</h2>
+      <p id="situation-1"></p>
+    </section>
+
+    <section class="bereich fall" aria-labelledby="fall-titel-2">
+      <h2 id="fall-titel-2">Fallsituation 2</h2>
+      <p id="situation-2"></p>
+    </section>
+
+    <section class="bereich zusatz" aria-labelledby="zusatz-titel">
+
+      <h3 id="zusatz-titel">
+        Zusatzaufgabe – Organisation der Ersten Hilfe
+      </h3>
+
+      <p id="zusatzfrage"></p>
+
+      <p id="anpassungsaufgabe">
+        <strong class="anpassungs-ueberschrift">
+          Anpassung an eure Verhältnisse:
+        </strong>
+        <br>
+        <span id="anpassungstext"></span>
+      </p>
+
+    </section>
+
+  </main>
+
+  <script>
+    /*
+      Die Fallsituationen orientieren sich an den Themen des
+      DGUV-Handbuchs zur Ersten Hilfe in Bildungs- und
+      Betreuungseinrichtungen für Kinder.
+
+      Es wird jeweils eine Fallsituation mit einem Kind und
+      eine Fallsituation mit einem Erwachsenen ausgewählt.
+    */
+
+    const kinderfaelle = [
+      {
+        typ: "augenveraetzung",
+
+        situation:
+          "In einer Kindergartengruppe werden nach dem Mittagessen die Tische gereinigt. Eine Erzieherin stellt eine Flasche mit konzentriertem Reinigungsmittel für einen Moment auf einen niedrigen Wagen und wird von einem anderen Kind angesprochen. Der vierjährige Leon nimmt die Flasche in die Hand und versucht, den Verschluss zu öffnen. Dabei spritzt ihm Flüssigkeit in das Gesicht und in das rechte Auge. Leon schreit laut auf, kneift das Auge fest zu und beginnt sofort, mit beiden Händen daran zu reiben. Das Auge tränt stark und ist deutlich gerötet. Er klagt über stechende und brennende Schmerzen und lässt sich kaum beruhigen. Einige Tropfen befinden sich außerdem auf seinem Pullover. Die Erzieherin weiß zunächst nicht, ob sie das Auge sofort spülen oder zuerst die Eltern anrufen soll. Der beschriftete Behälter mit dem verwendeten Produkt steht noch auf dem Wagen."
+      },
+      {
+        typ: "vergiftung_reinigungsmittel",
+
+        situation:
+          "Während der Nachmittagsbetreuung findet die fünfjährige Marie in einem Nebenraum eine durchsichtige Getränkeflasche. Die Flasche enthält eine farblose Flüssigkeit und steht neben mehreren Reinigungsutensilien. Marie glaubt, dass es sich um Wasser handelt, und nimmt einen Schluck. Kurz darauf verzieht sie das Gesicht, beginnt zu husten und klagt über einen brennenden Geschmack im Mund. Eine Betreuungskraft bemerkt den Vorfall erst, als Marie die Flasche fallen lässt. Das Kind kann nicht sicher sagen, wie viel es getrunken hat. Die Flasche trägt keine Kennzeichnung. Ein Mitarbeiter vermutet, dass eine Reinigungskraft zuvor ein Reinigungsmittel umgefüllt haben könnte. Eine Kollegin möchte Marie sofort Milch geben, während eine andere überlegt, ob das Kind zum Erbrechen gebracht werden sollte."
+      },
+      {
+        typ: "pflanzenvergiftung",
+
+        situation:
+          "Eine erste Klasse unternimmt einen Ausflug zu einem Waldspielplatz. Während einer kurzen Pause spielen mehrere Kinder am Rand eines Gebüschs. Die siebenjährige Mila zeigt ihren Freunden leuchtend rote Beeren und erklärt, dass diese wie kleine Kirschen aussähen. Als eine Lehrerin hinzukommt, hat Mila bereits auf mindestens einer Beere gekaut. Ob sie weitere Beeren geschluckt hat, kann sie nicht sicher sagen. Wenig später klagt sie über Übelkeit, Bauchschmerzen und Schwindel. Die Lehrerin kennt die Pflanze nicht. Ein Zweig mit Blättern und weiteren Beeren ist noch vorhanden. Die Gruppe befindet sich abseits der Schule, und die genaue Bezeichnung des Waldweges ist den Begleitpersonen nicht bekannt. Die übrigen Kinder möchten die Beeren ebenfalls ansehen und sammeln."
+      },
+      {
+        typ: "medikamentenvergiftung",
+
+        situation:
+          "In einer Kindergartengruppe bringt ein Kind versehentlich die Handtasche seiner Großmutter mit in den Gruppenraum. Während die Erzieherin einem anderen Kind hilft, öffnet der dreijährige Tom die Tasche und findet darin eine kleine Dose mit Tabletten. Als die Erzieherin ihn bemerkt, hält Tom eine geöffnete Packung in der Hand und kaut auf einer Tablette. Mehrere weitere Tabletten liegen auf dem Boden. Es ist nicht erkennbar, wie viele ursprünglich in der Packung waren und ob Tom bereits weitere Tabletten geschluckt hat. Das Kind wirkt zunächst unauffällig und sagt, die Tabletten hätten süß geschmeckt. Auf der Packung ist der Name des Medikaments lesbar. Eine Kollegin meint, man könne zunächst abwarten, solange Tom keine Beschwerden habe."
+      },
+      {
+        typ: "stromunfall",
+
+        situation:
+          "Während der Nachmittagsbetreuung spielt die achtjährige Hanna in einem Nebenraum. Dort steht eine ältere Mehrfachsteckdose, deren Kabel an einer Stelle beschädigt ist. Ein anderes Kind berichtet plötzlich von einem Knall und ruft nach einer Betreuungskraft. Hanna liegt neben der Mehrfachsteckdose auf dem Boden. Sie ist wach, wirkt aber benommen und erschrocken. Sie klagt über Schmerzen in einer Hand, Schwindel und ein unangenehmes Gefühl im Brustkorb. An einem Finger ist eine kleine gerötete Hautstelle zu erkennen. Ob das Kabel oder die Steckdose noch unter Spannung stehen, ist nicht sicher feststellbar. Ein Mitarbeiter möchte sofort zu Hanna laufen und sie an der Hand vom Kabel wegziehen. Mehrere Kinder stehen in der Tür und beobachten das Geschehen."
+      }
+    ];
+
+    const erwachsenenfaelle = [
+      {
+        typ: "hautveraetzung",
+
+        situation:
+          "Eine 42-jährige Reinigungskraft arbeitet am Nachmittag in den Sanitärräumen einer Grundschule. Beim Umfüllen eines konzentrierten Reinigungsmittels rutscht ihr der Behälter aus der Hand. Die Flüssigkeit läuft über beide Hände und einen Unterarm. Außerdem werden die Ärmel ihrer Arbeitskleidung benetzt. Nachdem sie die Handschuhe ausgezogen hat, bemerkt sie ein starkes Brennen. Die Haut ist deutlich gerötet, stellenweise aufgequollen und verändert ihre Farbe. Die Reinigungskraft ist wach und ansprechbar, wirkt aber sehr aufgeregt. Eine Kollegin möchte die betroffenen Stellen mit einem Handtuch trockenreiben. Der Produktbehälter ist gekennzeichnet und befindet sich noch im Raum. Ob geeignete Schutzhandschuhe und eine schnell erreichbare Spülmöglichkeit vorhanden sind, ist zunächst unklar."
+      },
+      {
+        typ: "augenveraetzung",
+
+        situation:
+          "Ein 48-jähriger Hausmeister entfernt in einem Betriebsraum hartnäckige Ablagerungen mit einem konzentrierten Reinigungsmittel. Beim Öffnen des Behälters spritzt ihm Flüssigkeit in das linke Auge. Er lässt den Behälter fallen, kneift das Auge sofort zu und ruft laut nach Hilfe. Das Auge tränt stark und ist sichtbar gerötet. Der Hausmeister klagt über heftiges Brennen und kann das Auge kaum öffnen. Eine Kollegin findet ihn wenige Augenblicke später. Sie trägt keine geeigneten Schutzhandschuhe und ist unsicher, wie sie beim Spülen helfen kann, ohne selbst mit dem Stoff in Kontakt zu kommen. Im Raum gibt es ein Waschbecken, der Zugang ist jedoch teilweise durch abgestellte Reinigungsgeräte versperrt. Der gekennzeichnete Produktbehälter liegt auf dem Boden."
+      },
+      {
+        typ: "gefahrstoffdaempfe",
+
+        situation:
+          "Eine 39-jährige Mitarbeiterin reinigt am späten Nachmittag die Toilettenräume einer Kita. Um hartnäckige Verschmutzungen zu beseitigen, verwendet sie nacheinander zwei unterschiedliche Reinigungsmittel. Kurz darauf entsteht ein stechender Geruch. Eine Kollegin hört sie heftig husten und findet sie im Sanitärraum an die Wand gelehnt. Die Mitarbeiterin klagt über brennende Augen, Übelkeit und zunehmende Atemnot. Ihre Augen tränen stark und sie wirkt benommen. Im Raum stehen zwei geöffnete, unterschiedlich gekennzeichnete Reinigungsmittelflaschen. Die Kollegin befindet sich noch außerhalb des Sanitärraums. Sie überlegt, hineinzugehen und die Mitarbeiterin herauszuziehen. Mehrere Kinder befinden sich im angrenzenden Flur."
+      },
+      {
+        typ: "stromunfall",
+
+        situation:
+          "Ein 51-jähriger Lehrer möchte vor Unterrichtsbeginn einen alten Projektor anschließen. Das Stromkabel weist eine beschädigte Stelle auf, die ihm zunächst nicht auffällt. Als er den Stecker einsteckt und das Gerät berührt, verkrampft sich seine Hand am Gehäuse. Ein Kollege hört ein ungewöhnliches Geräusch und sieht, dass der Lehrer nicht selbstständig loslassen kann. Nach kurzer Zeit fällt die Sicherung aus und der Lehrer sinkt zu Boden. Er ist zunächst ansprechbar, wirkt aber verwirrt und klagt über Schmerzen im Arm, Schwindel und ein Engegefühl im Brustkorb. Am Morgen befinden sich bereits mehrere Kinder im Raum. Der Kollege weiß nicht sicher, ob der Stromkreis vollständig unterbrochen ist und ob er das Gerät gefahrlos berühren kann."
+      },
+      {
+        typ: "gasvergiftung",
+
+        situation:
+          "An einem kalten Wintermorgen bemerkt eine Erzieherin im Flur einer Kita einen ungewöhnlichen Geruch aus einem kleinen Heizungsraum. Durch das Sichtfenster der geschlossenen Tür erkennt sie einen 57-jährigen Hausmeister, der auf dem Boden sitzt und sich an die Wand lehnt. Er wirkt benommen und reagiert nur verzögert auf Rufen und Klopfen. Kurz zuvor hatte er über Kopfschmerzen, Übelkeit und Schwindel geklagt. Ob im Heizungsraum ein technischer Defekt vorliegt oder gefährliche Gase ausgetreten sind, ist nicht bekannt. Die Erzieherin befindet sich noch außerhalb des Raums. Sie möchte die Tür öffnen und den Hausmeister herausholen. Gleichzeitig kommen mehrere Kinder den Flur entlang und nähern sich dem Bereich."
+      }
+    ];
+
+    const zusatzaufgaben = [
+      {
+        passendZu: [
+          "augenveraetzung",
+          "vergiftung_reinigungsmittel",
+          "pflanzenvergiftung",
+          "medikamentenvergiftung",
+          "hautveraetzung",
+          "gefahrstoffdaempfe",
+          "gasvergiftung"
+        ],
+
+        frage:
+          "Wie müssen Reinigungsmittel, Chemikalien, Medikamente und andere möglicherweise gefährliche Stoffe in einer Bildungs- oder Betreuungseinrichtung gelagert und gekennzeichnet werden, damit Kinder keinen Zugriff darauf haben und Verwechslungen vermieden werden?",
+
+        anpassung:
+          "Wählt einen konkreten Lagerort oder Arbeitsbereich in eurer eigenen Einrichtung. Beschreibt, welche Stoffe dort aufbewahrt werden, wer Zugang hat, wie die Behälter gekennzeichnet sind und wie verhindert wird, dass Gefahrstoffe in ungeeignete oder unbeschriftete Behälter umgefüllt werden. Benennt mögliche Verbesserungen."
+      },
+      {
+        passendZu: [
+          "vergiftung_reinigungsmittel",
+          "pflanzenvergiftung",
+          "medikamentenvergiftung",
+          "gefahrstoffdaempfe",
+          "gasvergiftung"
+        ],
+
+        frage:
+          "Welche Informationen müssen bei einer möglichen Vergiftung für Giftnotruf, Rettungsdienst oder ärztliche Beratung bereitgehalten werden? Berücksichtigt den beteiligten Stoff, die mögliche Menge, den Aufnahmeweg, den Zeitpunkt und die beobachteten Beschwerden.",
+
+        anpassung:
+          "Wählt ein konkretes Produkt, Medikament oder eine mögliche Giftquelle aus eurer eigenen Einrichtung. Prüft, welche Informationen im Notfall verfügbar wären, wo sich Produktbehälter und Sicherheitsinformationen befinden und wie die zuständige Giftnotrufzentrale erreicht werden kann. Beschreibt den Ablauf anhand eines konkreten Beispiels."
+      },
+      {
+        passendZu: [
+          "augenveraetzung",
+          "hautveraetzung",
+          "gefahrstoffdaempfe"
+        ],
+
+        frage:
+          "Welche Erste-Hilfe-Einrichtungen und Schutzausrüstungen müssen dort schnell erreichbar sein, wo mit ätzenden oder reizenden Stoffen gearbeitet wird? Berücksichtigt Spülmöglichkeiten, geeignete Handschuhe, freie Zugangswege und die Kenntnis der Mitarbeiter über deren Standorte.",
+
+        anpassung:
+          "Wählt einen konkreten Reinigungs-, Werk- oder Betriebsraum eurer eigenen Einrichtung. Beschreibt, welche Spülmöglichkeiten und Schutzausrüstungen vorhanden sind, wie schnell sie erreicht werden können und ob die Zugangswege frei sind. Prüft, ob alle Mitarbeiter und Vertretungskräfte die Standorte und das vorgesehene Vorgehen kennen."
+      },
+      {
+        passendZu: [
+          "stromunfall"
+        ],
+
+        frage:
+          "Welche organisatorischen und technischen Maßnahmen müssen getroffen werden, damit Ersthelfer bei einem Stromunfall nicht selbst gefährdet werden? Berücksichtigt das sichere Unterbrechen der Stromzufuhr, die Absicherung des Bereichs und das Fernhalten anderer Personen.",
+
+        anpassung:
+          "Wählt einen konkreten Raum oder ein elektrisches Gerät aus eurer eigenen Einrichtung. Beschreibt, wie die Stromzufuhr im Notfall sicher unterbrochen werden kann, wer Zugang zum Sicherungskasten hat und wie der Gefahrenbereich abgesichert würde. Prüft außerdem, wie beschädigte Geräte und Leitungen gemeldet und bis zur Reparatur der weiteren Benutzung entzogen werden."
+      },
+      {
+        passendZu: [
+          "augenveraetzung",
+          "vergiftung_reinigungsmittel",
+          "pflanzenvergiftung",
+          "medikamentenvergiftung",
+          "stromunfall",
+          "hautveraetzung",
+          "gefahrstoffdaempfe",
+          "gasvergiftung"
+        ],
+
+        frage:
+          "Welche Aufgaben können weitere Mitarbeiter übernehmen, während ein Ersthelfer die betroffene Person versorgt? Berücksichtigt Eigenschutz, Notruf, Einweisung des Rettungsdienstes, Absicherung des Gefahrenbereichs, Betreuung der übrigen Kinder und Bereitstellung von Produktinformationen.",
+
+        anpassung:
+          "Wählt einen konkreten Bereich in eurer eigenen Kita, Grundschule oder Betreuungseinrichtung. Beschreibt, welcher Mitarbeiter die betroffene Person versorgen, den Notruf absetzen, den Rettungsdienst einweisen, den Gefahrenbereich sichern und die übrigen Kinder betreuen würde. Prüft besonders, wie verhindert werden kann, dass weitere Personen den gefährlichen Bereich betreten."
+      }
+    ];
+
+    /*
+      Ein weltweit einheitliches Zeitfenster von fünf Stunden.
+      Alle Geräte erhalten innerhalb desselben Zeitfensters
+      dieselbe Kombination.
+    */
+
+    const fuenfStunden =
+      5 * 60 * 60 * 1000;
+
+    const zeitfenster =
+      Math.floor(Date.now() / fuenfStunden);
+
+    /*
+      Deterministische Zufallsfunktion:
+      Die Auswahl bleibt innerhalb eines Zeitfensters stabil.
+    */
+
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
+
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
+
+      return wert >>> 0;
+    }
+
+    /*
+      Auswahl eines Kinderfalls und eines Erwachsenenfalls.
+    */
+
+    const kinderIndex =
+      pseudoZufall(zeitfenster + 0x63d8a1) %
+      kinderfaelle.length;
+
+    const erwachsenenIndex =
+      pseudoZufall(zeitfenster + 0xb47e25) %
+      erwachsenenfaelle.length;
+
+    const kinderFall =
+      kinderfaelle[kinderIndex];
+
+    const erwachsenenFall =
+      erwachsenenfaelle[erwachsenenIndex];
+
+    /*
+      Auch die Reihenfolge der beiden Fälle wird gewechselt.
+    */
+
+    const reihenfolgeWechseln =
+      pseudoZufall(zeitfenster + 0x29c7f4) %
+      2 === 1;
+
+    let ersterFall;
+    let zweiterFall;
+
+    if (reihenfolgeWechseln) {
+      ersterFall = kinderFall;
+      zweiterFall = erwachsenenFall;
+    } else {
+      ersterFall = erwachsenenFall;
+      zweiterFall = kinderFall;
+    }
+
+    /*
+      Die Zusatzaufgabe wird aus den Aufgaben ausgewählt,
+      die zu mindestens einer der beiden Fallsituationen passen.
+    */
+
+    const passendeZusatzaufgaben =
+      zusatzaufgaben.filter(function(aufgabe) {
+        return (
+          aufgabe.passendZu.includes(ersterFall.typ) ||
+          aufgabe.passendZu.includes(zweiterFall.typ)
+        );
+      });
+
+    const zusatzIndex =
+      pseudoZufall(zeitfenster + 0xd15b93) %
+      passendeZusatzaufgaben.length;
+
+    const aktuelleZusatzaufgabe =
+      passendeZusatzaufgaben[zusatzIndex];
+
+    /*
+      Ausgabe auf der Webseite
+    */
+
+    document.getElementById("situation-1").textContent =
+      ersterFall.situation;
+
+    document.getElementById("situation-2").textContent =
+      zweiterFall.situation;
+
+    document.getElementById("zusatzfrage").textContent =
+      aktuelleZusatzaufgabe.frage;
+
+    document.getElementById("anpassungstext").textContent =
+      aktuelleZusatzaufgabe.anpassung;
+  </script>
+</body>
+</html>
