@@ -86,7 +86,8 @@
       margin: 0 0 12px;
     }
 
-    #situation,
+    #situation-1,
+    #situation-2,
     #zusatzfrage,
     #anpassungsaufgabe {
       margin: 0;
@@ -138,9 +139,14 @@
       Erste Hilfe in Bildungs- und Betreuungseinrichtungen für Kinder
     </p>
 
-    <section class="bereich fall" aria-labelledby="fall-titel">
-      <h2 id="fall-titel">Fallsituation</h2>
-      <p id="situation"></p>
+    <section class="bereich fall" aria-labelledby="fall-titel-1">
+      <h2 id="fall-titel-1">Fallsituation 1</h2>
+      <p id="situation-1"></p>
+    </section>
+
+    <section class="bereich fall" aria-labelledby="fall-titel-2">
+      <h2 id="fall-titel-2">Fallsituation 2</h2>
+      <p id="situation-2"></p>
     </section>
 
     <section class="bereich zusatz" aria-labelledby="zusatz-titel">
@@ -164,49 +170,51 @@
   </main>
 
   <script>
-    /*
-      Die Zahlen unter "passendeZusatzaufgaben" verweisen auf die
-      Zusatzaufgaben im zweiten Datenblock.
-
-      Dadurch wird nur eine Zusatzaufgabe ausgewählt, die inhaltlich
-      zur jeweiligen Fallsituation passt.
-    */
-
-    const faelle = [
+    const kinderfaelle = [
       {
-        situation:
-          "Es ist kurz vor der Frühstückspause in einer ersten Klasse. Der sechsjährige Jonas sitzt an seinem Platz und malt. Ohne erkennbaren Anlass lässt er plötzlich den Stift fallen. Sein Körper versteift sich und er rutscht vom Stuhl auf den Boden. Kurz darauf beginnen seine Arme und Beine kräftig zu zucken. Jonas reagiert nicht auf Ansprache. Ein Tisch und mehrere Stühle stehen dicht neben ihm. Einige Kinder laufen erschrocken zu ihm, andere beginnen zu weinen. Nach ungefähr einer Minute lassen die Bewegungen nach. Jonas bleibt regungslos auf dem Boden liegen. Er atmet selbstständig, reagiert aber zunächst nicht und öffnet erst nach einiger Zeit langsam die Augen. Anschließend wirkt er sehr erschöpft und kann nicht erklären, was geschehen ist. Der Klassenlehrerin ist keine entsprechende Erkrankung bekannt.",
+        typ: "krampfanfall",
 
-        passendeZusatzaufgaben: [0, 1, 3, 4]
+        situation:
+          "Es ist kurz vor der Frühstückspause in einer ersten Klasse. Der sechsjährige Jonas sitzt an seinem Platz und malt. Ohne erkennbaren Anlass lässt er plötzlich den Stift fallen. Sein Körper versteift sich und er rutscht vom Stuhl auf den Boden. Kurz darauf beginnen seine Arme und Beine kräftig zu zucken. Jonas reagiert nicht auf Ansprache. Ein Tisch und mehrere Stühle stehen dicht neben ihm. Einige Kinder laufen erschrocken zu ihm, andere beginnen zu weinen. Nach ungefähr einer Minute lassen die Bewegungen nach. Jonas bleibt regungslos auf dem Boden liegen. Er atmet selbstständig, reagiert aber zunächst nicht und öffnet erst nach einiger Zeit langsam die Augen. Anschließend wirkt er sehr erschöpft und kann nicht erklären, was geschehen ist. Der Klassenlehrerin ist keine entsprechende Erkrankung bekannt."
       },
       {
-        situation:
-          "Eine 34-jährige Erzieherin bereitet mit den Kindern das gemeinsame Mittagessen vor. Seit dem frühen Morgen hatte sie wegen mehrerer Krankheitsausfälle kaum Zeit für eine Pause. Einer Kollegin fällt auf, dass die Erzieherin plötzlich stark schwitzt und ihre Hände zittern. Sie wirkt ungewöhnlich gereizt und schiebt ein Kind heftig zur Seite, obwohl dieses nur nach einem Teller greifen wollte. Auf Fragen antwortet sie zunehmend verwirrt. Sie behauptet, bereits gegessen zu haben, kann sich aber nicht erinnern, wann das gewesen sein soll. Beim Versuch, zum Tisch zu gehen, schwankt sie und muss sich an einem Regal festhalten. Eine Kollegin weiß, dass die Erzieherin Diabetes hat. Ob sie ein Notfallset bei sich trägt oder welche Absprachen für einen solchen Fall bestehen, ist den anderen Mitarbeitern nicht bekannt.",
+        typ: "kopfverletzung",
 
-        passendeZusatzaufgaben: [0, 1, 3]
+        situation:
+          "Während der Hofpause spielen mehrere Grundschulkinder Fangen. Der achtjährige Emil stößt beim schnellen Laufen mit einem anderen Kind zusammen. Beide prallen mit den Köpfen gegeneinander und fallen zu Boden. Das andere Kind steht nach kurzer Zeit wieder auf und klagt lediglich über Schmerzen an einer Beule. Emil bleibt zunächst sitzen. An seiner linken Stirn befindet sich eine leicht blutende Platzwunde. Er sagt, ihm sei schwindelig und übel. Eine Aufsichtsperson begleitet ihn zu einer Bank. Wenige Minuten später kann Emil nicht mehr genau beschreiben, wie der Zusammenstoß passiert ist. Er fragt wiederholt, wann die Pause beginne, obwohl sie bereits fast beendet ist. Außerdem wirkt er zunehmend müde und möchte sich hinlegen. Die Aufsichtsperson ist gleichzeitig für zahlreiche andere Kinder auf dem Schulhof verantwortlich."
+      }
+    ];
+
+    const erwachsenenfaelle = [
+      {
+        typ: "unterzuckerung",
+
+        situation:
+          "Eine 34-jährige Erzieherin bereitet mit den Kindern das gemeinsame Mittagessen vor. Seit dem frühen Morgen hatte sie wegen mehrerer Krankheitsausfälle kaum Zeit für eine Pause. Einer Kollegin fällt auf, dass die Erzieherin plötzlich stark schwitzt und ihre Hände zittern. Sie wirkt ungewöhnlich gereizt und schiebt ein Kind heftig zur Seite, obwohl dieses nur nach einem Teller greifen wollte. Auf Fragen antwortet sie zunehmend verwirrt. Sie behauptet, bereits gegessen zu haben, kann sich aber nicht erinnern, wann das gewesen sein soll. Beim Versuch, zum Tisch zu gehen, schwankt sie und muss sich an einem Regal festhalten. Eine Kollegin weiß, dass die Erzieherin Diabetes hat. Ob sie ein Notfallset bei sich trägt oder welche Absprachen für einen solchen Fall bestehen, ist den anderen Mitarbeitern nicht bekannt."
       },
       {
-        situation:
-          "Während der Hofpause spielen mehrere Grundschulkinder Fangen. Der achtjährige Emil stößt beim schnellen Laufen mit einem anderen Kind zusammen. Beide prallen mit den Köpfen gegeneinander und fallen zu Boden. Das andere Kind steht nach kurzer Zeit wieder auf und klagt lediglich über Schmerzen an einer Beule. Emil bleibt zunächst sitzen. An seiner linken Stirn befindet sich eine leicht blutende Platzwunde. Er sagt, ihm sei schwindelig und übel. Eine Aufsichtsperson begleitet ihn zu einer Bank. Wenige Minuten später kann Emil nicht mehr genau beschreiben, wie der Zusammenstoß passiert ist. Er fragt wiederholt, wann die Pause beginne, obwohl sie bereits fast beendet ist. Außerdem wirkt er zunehmend müde und möchte sich hinlegen. Die Aufsichtsperson ist gleichzeitig für zahlreiche andere Kinder auf dem Schulhof verantwortlich.",
+        typ: "bewusstlosigkeit",
 
-        passendeZusatzaufgaben: [0, 2, 3, 4]
+        situation:
+          "Nach Beginn der ersten Unterrichtsstunde möchte eine Mitarbeiterin Material aus dem Kopierraum holen. Dort findet sie eine 52-jährige Lehrerin regungslos auf dem Boden. Niemand hat beobachtet, was passiert ist oder wie lange sie dort bereits liegt. Neben ihr befinden sich mehrere heruntergefallene Unterlagen. Eine umgekippte kleine Trittleiter steht in der Nähe, eine offensichtliche Verletzung oder starke Blutung ist jedoch nicht zu erkennen. Die Mitarbeiterin spricht die Lehrerin laut an und berührt sie vorsichtig an den Schultern. Es erfolgt keine Reaktion. Bei der weiteren Kontrolle stellt sie fest, dass die Lehrerin selbstständig und regelmäßig atmet. Auf dem Flur sammeln sich neugierige Kinder. Der genaue Raum ist vom Haupteingang der Schule aus nur schwer zu finden."
       },
       {
-        situation:
-          "Nach Beginn der ersten Unterrichtsstunde möchte eine Mitarbeiterin Material aus dem Kopierraum holen. Dort findet sie eine 52-jährige Lehrerin regungslos auf dem Boden. Niemand hat beobachtet, was passiert ist oder wie lange sie dort bereits liegt. Neben ihr befinden sich mehrere heruntergefallene Unterlagen. Eine umgekippte kleine Trittleiter steht in der Nähe, eine offensichtliche Verletzung oder starke Blutung ist jedoch nicht zu erkennen. Die Mitarbeiterin spricht die Lehrerin laut an und berührt sie vorsichtig an den Schultern. Es erfolgt keine Reaktion. Bei der weiteren Kontrolle stellt sie fest, dass die Lehrerin selbstständig und regelmäßig atmet. Auf dem Flur sammeln sich neugierige Kinder. Der genaue Raum ist vom Haupteingang der Schule aus nur schwer zu finden.",
+        typ: "krampfanfall",
 
-        passendeZusatzaufgaben: [0, 3, 4]
-      },
-      {
         situation:
-          "Ein 29-jähriger Mitarbeiter beaufsichtigt gemeinsam mit einer Kollegin die Nachmittagsbetreuung. Während er im Flur mit einem Kind spricht, hält er plötzlich inne und wirkt für einige Sekunden abwesend. Danach fällt er zu Boden. Sein gesamter Körper beginnt kräftig zu zucken. Dabei schlägt sein rechter Arm wiederholt gegen ein Tischbein. Die Kollegin weiß nicht, ob sie ihn festhalten soll, und mehrere Kinder versuchen, näher an ihn heranzukommen. Nach ungefähr zwei Minuten lassen die Bewegungen nach. Der Mitarbeiter bleibt auf dem Boden liegen und atmet selbstständig. Er reagiert zunächst nicht auf Ansprache und öffnet später nur langsam die Augen. Anschließend wirkt er erschöpft, verwirrt und möchte sofort wieder aufstehen. Ob ein Krampfleiden bekannt ist, wissen die anwesenden Kollegen nicht.",
-
-        passendeZusatzaufgaben: [0, 1, 3, 4]
+          "Ein 29-jähriger Mitarbeiter beaufsichtigt gemeinsam mit einer Kollegin die Nachmittagsbetreuung. Während er im Flur mit einem Kind spricht, hält er plötzlich inne und wirkt für einige Sekunden abwesend. Danach fällt er zu Boden. Sein gesamter Körper beginnt kräftig zu zucken. Dabei schlägt sein rechter Arm wiederholt gegen ein Tischbein. Die Kollegin weiß nicht, ob sie ihn festhalten soll, und mehrere Kinder versuchen, näher an ihn heranzukommen. Nach ungefähr zwei Minuten lassen die Bewegungen nach. Der Mitarbeiter bleibt auf dem Boden liegen und atmet selbstständig. Er reagiert zunächst nicht auf Ansprache und öffnet später nur langsam die Augen. Anschließend wirkt er erschöpft, verwirrt und möchte sofort wieder aufstehen. Ob ein Krampfleiden bekannt ist, wissen die anwesenden Kollegen nicht."
       }
     ];
 
     const zusatzaufgaben = [
       {
+        passendZu: [
+          "krampfanfall",
+          "kopfverletzung",
+          "unterzuckerung",
+          "bewusstlosigkeit"
+        ],
+
         frage:
           "Welche Aufgaben können weitere Mitarbeiter übernehmen, während ein Ersthelfer die betroffene Person versorgt? Berücksichtigt dabei insbesondere Notruf, Einweisung des Rettungsdienstes, Freihalten des Bereichs, Betreuung der übrigen Kinder und Information der Erziehungsberechtigten.",
 
@@ -214,6 +222,11 @@
           "Wählt einen konkreten Ort in eurer eigenen Kita, Grundschule oder Betreuungseinrichtung, an dem eine Bewusstseinsstörung auftreten könnte. Beschreibt, welcher Mitarbeiter die betroffene Person versorgen, den Notruf absetzen, den Rettungsdienst einweisen und die übrigen Kinder betreuen würde. Prüft auch, wie verhindert werden kann, dass Kinder den Notfallbereich betreten oder das Geschehen unmittelbar beobachten müssen."
       },
       {
+        passendZu: [
+          "krampfanfall",
+          "unterzuckerung"
+        ],
+
         frage:
           "Welche organisatorischen Absprachen sind erforderlich, wenn bei einem Kind oder einem Mitarbeiter eine Erkrankung bekannt ist, die zu Bewusstseinsstörungen oder Krampfanfällen führen kann? Wer muss welche Informationen kennen und wie wird das Vorgehen im Notfall festgelegt?",
 
@@ -221,6 +234,10 @@
           "Übertragt die Aufgabe auf eine konkrete oder realistisch vorstellbare Person aus eurer eigenen Einrichtung. Beschreibt, welche Informationen, Notfallpläne oder ärztlichen Anweisungen vorliegen müssten, welche Mitarbeiter davon Kenntnis benötigen und wie Vertretungskräfte oder neue Kollegen einbezogen werden. Benennt möglichen Verbesserungsbedarf."
       },
       {
+        passendZu: [
+          "kopfverletzung"
+        ],
+
         frage:
           "Was muss nach einem Unfall oder einer Erste-Hilfe-Leistung hinsichtlich Information der Erziehungsberechtigten, Dokumentation und möglicher ärztlicher Abklärung organisatorisch geregelt sein?",
 
@@ -228,6 +245,13 @@
           "Wählt einen konkreten Unfallort oder einen typischen Unfall aus eurer eigenen Einrichtung. Beschreibt, wer die Erziehungsberechtigten informiert, wo die Erste-Hilfe-Leistung dokumentiert wird, wer über eine notwendige ärztliche Abklärung entscheidet und wie die Aufsicht über die übrigen Kinder währenddessen sichergestellt bleibt. Prüft, ob diese Abläufe allen Mitarbeitern bekannt sind."
       },
       {
+        passendZu: [
+          "krampfanfall",
+          "kopfverletzung",
+          "unterzuckerung",
+          "bewusstlosigkeit"
+        ],
+
         frage:
           "Wie muss die Alarmierung in einer Kita oder Grundschule organisiert sein, damit Ersthelfer und Rettungsdienst auch in abgelegenen oder schwer auffindbaren Bereichen schnell erreicht beziehungsweise eingewiesen werden können?",
 
@@ -235,6 +259,12 @@
           "Wählt einen konkreten, möglichst abgelegenen oder schwer auffindbaren Bereich eurer eigenen Einrichtung, beispielsweise einen Materialraum, das Außengelände, eine Sporthalle oder einen Nebenraum. Beschreibt den tatsächlichen Ablauf vom Erkennen des Notfalls über die interne Alarmierung und den Notruf bis zur Einweisung des Rettungsdienstes. Prüft, wo Zeit verloren gehen könnte und welche Verbesserungen sinnvoll wären."
       },
       {
+        passendZu: [
+          "krampfanfall",
+          "kopfverletzung",
+          "bewusstlosigkeit"
+        ],
+
         frage:
           "Wie sollten Mitarbeiter mit Kindern umgehen, die einen schweren Notfall oder einen Krampfanfall unmittelbar miterlebt haben? Welche organisatorischen Maßnahmen helfen dabei, die betroffene Person zu schützen und gleichzeitig die übrigen Kinder angemessen zu betreuen?",
 
@@ -243,22 +273,11 @@
       }
     ];
 
-    /*
-      Ein weltweit einheitliches Zeitfenster von fünf Stunden.
-      Alle Geräte erhalten innerhalb desselben Zeitfensters
-      dieselbe Fallsituation und dieselbe Zusatzaufgabe.
-    */
-
     const fuenfStunden =
       5 * 60 * 60 * 1000;
 
     const zeitfenster =
       Math.floor(Date.now() / fuenfStunden);
-
-    /*
-      Deterministische Zufallsfunktion:
-      Die Auswahl bleibt innerhalb eines Zeitfensters stabil.
-    */
 
     function pseudoZufall(seed) {
       let wert = seed >>> 0;
@@ -270,43 +289,55 @@
       return wert >>> 0;
     }
 
-    /*
-      Die Fallsituation wechselt in jedem neuen Fünf-Stunden-Fenster.
-      Der Faktor 2 ist zur Anzahl der fünf Fälle teilerfremd.
-      Dadurch erscheinen alle Fälle, bevor sich die Reihenfolge wiederholt.
-    */
+    const kinderIndex =
+      pseudoZufall(zeitfenster + 0x72b4e1) %
+      kinderfaelle.length;
 
-    const fallIndex =
-      (zeitfenster * 2 + 1) %
-      faelle.length;
+    const erwachsenenIndex =
+      pseudoZufall(zeitfenster + 0xc831a5) %
+      erwachsenenfaelle.length;
 
-    const aktuellerFall =
-      faelle[fallIndex];
+    const kinderFall =
+      kinderfaelle[kinderIndex];
 
-    /*
-      Es wird nur aus den Zusatzaufgaben ausgewählt,
-      die inhaltlich zur aktuellen Fallsituation passen.
-    */
+    const erwachsenenFall =
+      erwachsenenfaelle[erwachsenenIndex];
 
-    const passendeAufgaben =
-      aktuellerFall.passendeZusatzaufgaben;
+    const reihenfolgeWechseln =
+      pseudoZufall(zeitfenster + 0x45d7a9) %
+      2 === 1;
 
-    const positionInAuswahl =
-      pseudoZufall(zeitfenster + fallIndex + 0xb4e7a1) %
-      passendeAufgaben.length;
+    let ersterFall;
+    let zweiterFall;
+
+    if (reihenfolgeWechseln) {
+      ersterFall = kinderFall;
+      zweiterFall = erwachsenenFall;
+    } else {
+      ersterFall = erwachsenenFall;
+      zweiterFall = kinderFall;
+    }
+
+    const passendeZusatzaufgaben =
+      zusatzaufgaben.filter(function(aufgabe) {
+        return (
+          aufgabe.passendZu.includes(ersterFall.typ) ||
+          aufgabe.passendZu.includes(zweiterFall.typ)
+        );
+      });
 
     const zusatzIndex =
-      passendeAufgaben[positionInAuswahl];
+      pseudoZufall(zeitfenster + 0xa94c23) %
+      passendeZusatzaufgaben.length;
 
     const aktuelleZusatzaufgabe =
-      zusatzaufgaben[zusatzIndex];
+      passendeZusatzaufgaben[zusatzIndex];
 
-    /*
-      Ausgabe auf der Webseite
-    */
+    document.getElementById("situation-1").textContent =
+      ersterFall.situation;
 
-    document.getElementById("situation").textContent =
-      aktuellerFall.situation;
+    document.getElementById("situation-2").textContent =
+      zweiterFall.situation;
 
     document.getElementById("zusatzfrage").textContent =
       aktuelleZusatzaufgabe.frage;
