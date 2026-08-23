@@ -4,146 +4,315 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Teamarbeit Bewusstseins-Notfälle</title>
+  <meta
+    name="description"
+    content="Teamarbeit zu Bewusstseinsstörungen in Bildungs- und Betreuungseinrichtungen für Kinder"
+  >
+
+  <title>Teamarbeit – Störungen des Bewusstseins</title>
 
   <style>
+    :root {
+      --star-red: #b00020;
+      --text: #222;
+      --muted: #5f6670;
+      --page: #f2f4f7;
+      --card: #ffffff;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
       margin: 0;
       padding: 20px;
-      color: #222;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .karte {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
+      max-width: 800px;
+      margin: 30px auto;
       padding: 30px;
+      background: var(--card);
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .logo img {
+      width: min(80%, 280px);
+      height: auto;
     }
 
     h1 {
-      color: #b00020;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.25;
     }
 
     .untertitel {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      color: #444;
+      margin: 0 0 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bereich {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.65;
     }
 
     .fall {
-      background: #f7f7f7;
-      padding: 22px;
-      border-radius: 10px;
-      margin-top: 20px;
-      line-height: 1.6;
+      background: var(--case);
     }
 
-    h2 {
-      margin-top: 0;
-      color: #333;
+    .zusatz {
+      background: var(--extra);
     }
 
+    h2,
     h3 {
-      margin-top: 30px;
+      margin: 0 0 12px;
     }
 
-    li {
-      margin-bottom: 10px;
-      line-height: 1.5;
+    #situation,
+    #zusatzfrage,
+    #anpassungsaufgabe {
+      margin: 0;
+    }
+
+    #anpassungsaufgabe {
+      margin-top: 18px;
+    }
+
+    .anpassungs-ueberschrift {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .karte {
+        margin: 10px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .bereich {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <main class="karte">
 
-<div class="karte">
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
 
-  <h1>Teamarbeit „Bewusstseins-Notfälle“</h1>
+    <h1>Teamarbeit „Störungen des Bewusstseins“</h1>
 
-  <p class="untertitel">
-    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
-  </p>
+    <p class="untertitel">
+      Erste Hilfe in Bildungs- und Betreuungseinrichtungen für Kinder
+    </p>
 
-  <div class="fall">
+    <section class="bereich fall" aria-labelledby="fall-titel">
+      <h2 id="fall-titel">Fallsituation</h2>
+      <p id="situation"></p>
+    </section>
 
-    <h2 id="titel"></h2>
+    <section class="bereich zusatz" aria-labelledby="zusatz-titel">
 
-    <p id="situation"></p>
+      <h3 id="zusatz-titel">
+        Zusatzaufgabe – Organisation der Ersten Hilfe
+      </h3>
 
-  </div>
+      <p id="zusatzfrage"></p>
 
-  <h3>Euer Auftrag</h3>
+      <p id="anpassungsaufgabe">
+        <strong class="anpassungs-ueberschrift">
+          Anpassung an eure Verhältnisse:
+        </strong>
+        <br>
+        <span id="anpassungstext"></span>
+      </p>
 
-  <ol>
-    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
-    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
-    <li>Welche Gefahren bestehen für die betroffene Person?</li>
-    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
-    <li>In welcher Reihenfolge handelt ihr?</li>
-    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
-    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
-  </ol>
+    </section>
 
-</div>
+  </main>
 
+  <script>
+    /*
+      Die Zahlen unter "passendeZusatzaufgaben" verweisen auf die
+      Zusatzaufgaben im zweiten Datenblock.
 
-<script>
+      Dadurch wird nur eine Zusatzaufgabe ausgewählt, die inhaltlich
+      zur jeweiligen Fallsituation passt.
+    */
 
-const faelle = [
+    const faelle = [
+      {
+        situation:
+          "Es ist kurz vor der Frühstückspause in einer ersten Klasse. Der sechsjährige Jonas sitzt an seinem Platz und malt. Ohne erkennbaren Anlass lässt er plötzlich den Stift fallen. Sein Körper versteift sich und er rutscht vom Stuhl auf den Boden. Kurz darauf beginnen seine Arme und Beine kräftig zu zucken. Jonas reagiert nicht auf Ansprache. Ein Tisch und mehrere Stühle stehen dicht neben ihm. Einige Kinder laufen erschrocken zu ihm, andere beginnen zu weinen. Nach ungefähr einer Minute lassen die Bewegungen nach. Jonas bleibt regungslos auf dem Boden liegen. Er atmet selbstständig, reagiert aber zunächst nicht und öffnet erst nach einiger Zeit langsam die Augen. Anschließend wirkt er sehr erschöpft und kann nicht erklären, was geschehen ist. Der Klassenlehrerin ist keine entsprechende Erkrankung bekannt.",
 
-  {
-    titel: "Einsatzsituation 1",
-    situation:
-      "Ein 48-jähriger Mann nimmt an einer mehrstündigen Fortbildung teil. Während einer Gruppenarbeit fällt auf, dass er zunehmend unruhig und unkonzentriert wirkt. Seine Hände zittern deutlich und er beginnt stark zu schwitzen. Auf Fragen antwortet er zunächst gereizt, kurze Zeit später jedoch zunehmend verwirrt. Er wirkt blass und sagt, dass ihm schwindelig sei. Der Mann ist noch ansprechbar und kann selbstständig sitzen. Ein anderer Teilnehmer berichtet, dass der Mann an Diabetes erkrankt ist und sich in der Mittagspause Insulin gespritzt habe. Gegessen habe er anschließend offenbar nur sehr wenig."
-  },
+        passendeZusatzaufgaben: [0, 1, 3, 4]
+      },
+      {
+        situation:
+          "Eine 34-jährige Erzieherin bereitet mit den Kindern das gemeinsame Mittagessen vor. Seit dem frühen Morgen hatte sie wegen mehrerer Krankheitsausfälle kaum Zeit für eine Pause. Einer Kollegin fällt auf, dass die Erzieherin plötzlich stark schwitzt und ihre Hände zittern. Sie wirkt ungewöhnlich gereizt und schiebt ein Kind heftig zur Seite, obwohl dieses nur nach einem Teller greifen wollte. Auf Fragen antwortet sie zunehmend verwirrt. Sie behauptet, bereits gegessen zu haben, kann sich aber nicht erinnern, wann das gewesen sein soll. Beim Versuch, zum Tisch zu gehen, schwankt sie und muss sich an einem Regal festhalten. Eine Kollegin weiß, dass die Erzieherin Diabetes hat. Ob sie ein Notfallset bei sich trägt oder welche Absprachen für einen solchen Fall bestehen, ist den anderen Mitarbeitern nicht bekannt.",
 
-  {
-    titel: "Einsatzsituation 2",
-    situation:
-      "Eine 36-jährige Frau steht während einer Veranstaltung plötzlich auf, wirkt für einen kurzen Moment abwesend und fällt anschließend zu Boden. Kurz darauf beginnt ihr gesamter Körper kräftig zu zucken. Arme und Beine bewegen sich unkontrolliert, und die Frau reagiert nicht auf Ansprache. Mehrere umstehende Personen versuchen, zu ihr zu gelangen. Nach ungefähr zwei Minuten lassen die Bewegungen langsam nach. Die Frau bleibt zunächst liegen, atmet selbstständig, wirkt jedoch sehr erschöpft und reagiert nur verzögert auf Ansprache. Eine Begleitperson berichtet, dass es in der Vergangenheit bereits einen ähnlichen Vorfall gegeben habe."
-  },
+        passendeZusatzaufgaben: [0, 1, 3]
+      },
+      {
+        situation:
+          "Während der Hofpause spielen mehrere Grundschulkinder Fangen. Der achtjährige Emil stößt beim schnellen Laufen mit einem anderen Kind zusammen. Beide prallen mit den Köpfen gegeneinander und fallen zu Boden. Das andere Kind steht nach kurzer Zeit wieder auf und klagt lediglich über Schmerzen an einer Beule. Emil bleibt zunächst sitzen. An seiner linken Stirn befindet sich eine leicht blutende Platzwunde. Er sagt, ihm sei schwindelig und übel. Eine Aufsichtsperson begleitet ihn zu einer Bank. Wenige Minuten später kann Emil nicht mehr genau beschreiben, wie der Zusammenstoß passiert ist. Er fragt wiederholt, wann die Pause beginne, obwohl sie bereits fast beendet ist. Außerdem wirkt er zunehmend müde und möchte sich hinlegen. Die Aufsichtsperson ist gleichzeitig für zahlreiche andere Kinder auf dem Schulhof verantwortlich.",
 
-  {
-    titel: "Einsatzsituation 3",
-    situation:
-      "Ein 63-jähriger Mann wird in einem Aufenthaltsraum regungslos auf dem Boden gefunden. Niemand hat beobachtet, was zuvor passiert ist oder wie lange er dort bereits liegt. Neben ihm befindet sich eine umgestürzte Tasse. Auf laute Ansprache reagiert der Mann nicht. Auch nach vorsichtigem Berühren und Ansprechen zeigt er keine erkennbare Reaktion. Äußerlich sind zunächst keine starken Blutungen oder offensichtlichen schweren Verletzungen zu erkennen. Bei der weiteren Beurteilung stellt ihr fest, dass der Mann selbstständig und regelmäßig atmet. Über Vorerkrankungen oder Medikamente ist den anwesenden Personen nichts bekannt."
-  }
+        passendeZusatzaufgaben: [0, 2, 3, 4]
+      },
+      {
+        situation:
+          "Nach Beginn der ersten Unterrichtsstunde möchte eine Mitarbeiterin Material aus dem Kopierraum holen. Dort findet sie eine 52-jährige Lehrerin regungslos auf dem Boden. Niemand hat beobachtet, was passiert ist oder wie lange sie dort bereits liegt. Neben ihr befinden sich mehrere heruntergefallene Unterlagen. Eine umgekippte kleine Trittleiter steht in der Nähe, eine offensichtliche Verletzung oder starke Blutung ist jedoch nicht zu erkennen. Die Mitarbeiterin spricht die Lehrerin laut an und berührt sie vorsichtig an den Schultern. Es erfolgt keine Reaktion. Bei der weiteren Kontrolle stellt sie fest, dass die Lehrerin selbstständig und regelmäßig atmet. Auf dem Flur sammeln sich neugierige Kinder. Der genaue Raum ist vom Haupteingang der Schule aus nur schwer zu finden.",
 
-];
+        passendeZusatzaufgaben: [0, 3, 4]
+      },
+      {
+        situation:
+          "Ein 29-jähriger Mitarbeiter beaufsichtigt gemeinsam mit einer Kollegin die Nachmittagsbetreuung. Während er im Flur mit einem Kind spricht, hält er plötzlich inne und wirkt für einige Sekunden abwesend. Danach fällt er zu Boden. Sein gesamter Körper beginnt kräftig zu zucken. Dabei schlägt sein rechter Arm wiederholt gegen ein Tischbein. Die Kollegin weiß nicht, ob sie ihn festhalten soll, und mehrere Kinder versuchen, näher an ihn heranzukommen. Nach ungefähr zwei Minuten lassen die Bewegungen nach. Der Mitarbeiter bleibt auf dem Boden liegen und atmet selbstständig. Er reagiert zunächst nicht auf Ansprache und öffnet später nur langsam die Augen. Anschließend wirkt er erschöpft, verwirrt und möchte sofort wieder aufstehen. Ob ein Krampfleiden bekannt ist, wissen die anwesenden Kollegen nicht.",
 
+        passendeZusatzaufgaben: [0, 1, 3, 4]
+      }
+    ];
 
-// TESTMODUS:
-// aktuell wechselt der Fall alle 30 Sekunden
+    const zusatzaufgaben = [
+      {
+        frage:
+          "Welche Aufgaben können weitere Mitarbeiter übernehmen, während ein Ersthelfer die betroffene Person versorgt? Berücksichtigt dabei insbesondere Notruf, Einweisung des Rettungsdienstes, Freihalten des Bereichs, Betreuung der übrigen Kinder und Information der Erziehungsberechtigten.",
 
-const jetzt = new Date();
+        anpassung:
+          "Wählt einen konkreten Ort in eurer eigenen Kita, Grundschule oder Betreuungseinrichtung, an dem eine Bewusstseinsstörung auftreten könnte. Beschreibt, welcher Mitarbeiter die betroffene Person versorgen, den Notruf absetzen, den Rettungsdienst einweisen und die übrigen Kinder betreuen würde. Prüft auch, wie verhindert werden kann, dass Kinder den Notfallbereich betreten oder das Geschehen unmittelbar beobachten müssen."
+      },
+      {
+        frage:
+          "Welche organisatorischen Absprachen sind erforderlich, wenn bei einem Kind oder einem Mitarbeiter eine Erkrankung bekannt ist, die zu Bewusstseinsstörungen oder Krampfanfällen führen kann? Wer muss welche Informationen kennen und wie wird das Vorgehen im Notfall festgelegt?",
 
-const zeitblock =
-  Math.floor(jetzt.getTime() / (30 * 1000));
+        anpassung:
+          "Übertragt die Aufgabe auf eine konkrete oder realistisch vorstellbare Person aus eurer eigenen Einrichtung. Beschreibt, welche Informationen, Notfallpläne oder ärztlichen Anweisungen vorliegen müssten, welche Mitarbeiter davon Kenntnis benötigen und wie Vertretungskräfte oder neue Kollegen einbezogen werden. Benennt möglichen Verbesserungsbedarf."
+      },
+      {
+        frage:
+          "Was muss nach einem Unfall oder einer Erste-Hilfe-Leistung hinsichtlich Information der Erziehungsberechtigten, Dokumentation und möglicher ärztlicher Abklärung organisatorisch geregelt sein?",
 
+        anpassung:
+          "Wählt einen konkreten Unfallort oder einen typischen Unfall aus eurer eigenen Einrichtung. Beschreibt, wer die Erziehungsberechtigten informiert, wo die Erste-Hilfe-Leistung dokumentiert wird, wer über eine notwendige ärztliche Abklärung entscheidet und wie die Aufsicht über die übrigen Kinder währenddessen sichergestellt bleibt. Prüft, ob diese Abläufe allen Mitarbeitern bekannt sind."
+      },
+      {
+        frage:
+          "Wie muss die Alarmierung in einer Kita oder Grundschule organisiert sein, damit Ersthelfer und Rettungsdienst auch in abgelegenen oder schwer auffindbaren Bereichen schnell erreicht beziehungsweise eingewiesen werden können?",
 
-// Fall auswählen
+        anpassung:
+          "Wählt einen konkreten, möglichst abgelegenen oder schwer auffindbaren Bereich eurer eigenen Einrichtung, beispielsweise einen Materialraum, das Außengelände, eine Sporthalle oder einen Nebenraum. Beschreibt den tatsächlichen Ablauf vom Erkennen des Notfalls über die interne Alarmierung und den Notruf bis zur Einweisung des Rettungsdienstes. Prüft, wo Zeit verloren gehen könnte und welche Verbesserungen sinnvoll wären."
+      },
+      {
+        frage:
+          "Wie sollten Mitarbeiter mit Kindern umgehen, die einen schweren Notfall oder einen Krampfanfall unmittelbar miterlebt haben? Welche organisatorischen Maßnahmen helfen dabei, die betroffene Person zu schützen und gleichzeitig die übrigen Kinder angemessen zu betreuen?",
 
-const fallNummer =
-  zeitblock % faelle.length;
+        anpassung:
+          "Bezieht die Aufgabe auf eine konkrete Kindergruppe und einen konkreten Raum oder Bereich eurer eigenen Einrichtung. Beschreibt, wer die Kinder aus dem unmittelbaren Notfallbereich begleitet, wie das Ereignis altersgerecht aufgegriffen werden könnte und wie die Privatsphäre der betroffenen Person geschützt wird. Benennt auch, an wen sich Mitarbeiter bei weiterem Unterstützungsbedarf wenden könnten."
+      }
+    ];
 
-const aktuellerFall =
-  faelle[fallNummer];
+    /*
+      Ein weltweit einheitliches Zeitfenster von fünf Stunden.
+      Alle Geräte erhalten innerhalb desselben Zeitfensters
+      dieselbe Fallsituation und dieselbe Zusatzaufgabe.
+    */
 
+    const fuenfStunden =
+      5 * 60 * 60 * 1000;
 
-// Fall anzeigen
+    const zeitfenster =
+      Math.floor(Date.now() / fuenfStunden);
 
-document.getElementById("titel").textContent =
-  aktuellerFall.titel;
+    /*
+      Deterministische Zufallsfunktion:
+      Die Auswahl bleibt innerhalb eines Zeitfensters stabil.
+    */
 
-document.getElementById("situation").textContent =
-  aktuellerFall.situation;
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
 
-</script>
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
 
+      return wert >>> 0;
+    }
+
+    /*
+      Die Fallsituation wechselt in jedem neuen Fünf-Stunden-Fenster.
+      Der Faktor 2 ist zur Anzahl der fünf Fälle teilerfremd.
+      Dadurch erscheinen alle Fälle, bevor sich die Reihenfolge wiederholt.
+    */
+
+    const fallIndex =
+      (zeitfenster * 2 + 1) %
+      faelle.length;
+
+    const aktuellerFall =
+      faelle[fallIndex];
+
+    /*
+      Es wird nur aus den Zusatzaufgaben ausgewählt,
+      die inhaltlich zur aktuellen Fallsituation passen.
+    */
+
+    const passendeAufgaben =
+      aktuellerFall.passendeZusatzaufgaben;
+
+    const positionInAuswahl =
+      pseudoZufall(zeitfenster + fallIndex + 0xb4e7a1) %
+      passendeAufgaben.length;
+
+    const zusatzIndex =
+      passendeAufgaben[positionInAuswahl];
+
+    const aktuelleZusatzaufgabe =
+      zusatzaufgaben[zusatzIndex];
+
+    /*
+      Ausgabe auf der Webseite
+    */
+
+    document.getElementById("situation").textContent =
+      aktuellerFall.situation;
+
+    document.getElementById("zusatzfrage").textContent =
+      aktuelleZusatzaufgabe.frage;
+
+    document.getElementById("anpassungstext").textContent =
+      aktuelleZusatzaufgabe.anpassung;
+  </script>
 </body>
 </html>
