@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Teamarbeit Atmungs-Notfälle</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f2f4f7;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .karte {
+      max-width: 750px;
+      margin: 30px auto;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .logo {
+      text-align: center;
+      margin-bottom: 25px;
+    }
+
+    .logo img {
+      max-width: 280px;
+      width: 80%;
+      height: auto;
+    }
+
+    h1 {
+      color: #b00020;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .fall {
+      background: #f7f7f7;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
+
+    .fall h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    .auftrag {
+      margin-top: 25px;
+      padding: 22px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      line-height: 1.5;
+    }
+
+    .auftrag h3 {
+      margin-top: 0;
+    }
+
+    .auftrag li {
+      margin-bottom: 10px;
+    }
+
+    .zusatz {
+      margin-top: 25px;
+      background: #eef3f7;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.6;
+    }
+
+    .zusatz h3 {
+      margin-top: 0;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="karte">
+
+  <!-- Logo -->
+  <div class="logo">
+    <img
+      src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+      alt="Logo"
+    >
+  </div>
+
+  <h1>Teamarbeit „Atmungs-Notfälle“</h1>
+
+
+  <!-- Zufällig ausgewählte Einsatzsituation -->
+  <div class="fall">
+
+    <h2 id="titel"></h2>
+
+    <p id="situation"></p>
+
+  </div>
+
+
+  <!-- Allgemeiner Arbeitsauftrag -->
+  <div class="auftrag">
+
+    <h3>Euer Auftrag</h3>
+
+    <ol>
+      <li>
+        Beurteilt die Situation und den Zustand der betroffenen Person.
+      </li>
+
+      <li>
+        Welche Auffälligkeiten und Warnzeichen erkennt ihr?
+      </li>
+
+      <li>
+        Welche Gefahren bestehen für die betroffene Person?
+      </li>
+
+      <li>
+        Welche Erste-Hilfe-Maßnahmen führt ihr durch?
+      </li>
+
+      <li>
+        In welcher Reihenfolge handelt ihr?
+      </li>
+
+      <li>
+        Welche Informationen gebt ihr beim Notruf weiter?
+      </li>
+
+      <li>
+        Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.
+      </li>
+    </ol>
+
+  </div>
+
+
+  <!-- Separat ausgeloste Zusatzaufgabe -->
+  <div class="zusatz">
+
+    <h3>Zusatzaufgabe – Betriebliche Erste Hilfe</h3>
+
+    <p id="zusatz"></p>
+
+  </div>
+
+</div>
+
+
+<script>
+
+/* =========================================================
+   EINSATZSITUATIONEN
+   ========================================================= */
+
+const faelle = [
+
+  {
+    titel: "Einsatzsituation 1",
+
+    situation:
+      "Eine 34-jährige Mitarbeiterin bekommt während einer Teamsitzung in einem Besprechungsraum zunehmend Schwierigkeiten beim Atmen. Sie unterbricht ihre Präsentation, setzt sich hin und stützt ihre Arme auf den Oberschenkeln ab. Sie kann nur noch kurze Sätze sprechen und muss zwischen den Worten immer wieder nach Luft holen. Ihre Atmung ist deutlich beschleunigt. Beim Ausatmen ist ein pfeifendes Atemgeräusch hörbar. Die Mitarbeiterin wirkt zunehmend ängstlich und unruhig. Auf Nachfrage berichtet sie, dass bei ihr Asthma bekannt ist. Ihr ärztlich verordnetes Asthmaspray befindet sich in ihrer Handtasche."
+  },
+
+  {
+    titel: "Einsatzsituation 2",
+
+    situation:
+      "Ein 45-jähriger Mitarbeiter sitzt während seiner Mittagspause mit mehreren Kollegen in der Betriebskantine. Während des Essens greift er sich plötzlich an den Hals und steht hektisch auf. Er versucht zu sprechen, bringt jedoch kaum einen Ton hervor. Auch kräftiges Husten gelingt ihm nicht mehr. Seine Atmung ist offensichtlich stark behindert. Er wirkt panisch und bekommt zunehmend schlechter Luft. Nach kurzer Zeit verfärben sich seine Lippen leicht bläulich. Der Mitarbeiter ist zunächst noch bei Bewusstsein, seine Bewegungen werden jedoch zunehmend schwächer."
+  },
+
+  {
+    titel: "Einsatzsituation 3",
+
+    situation:
+      "Ein 58-jähriger Mitarbeiter kommt am Morgen vom Firmenparkplatz und ist auf dem Weg in das Bürogebäude. Kurz vor dem Eingang bleibt er stehen und klagt über starke Atemnot. Er setzt sich auf eine niedrige Mauer, beugt den Oberkörper nach vorne und stützt seine Arme auf den Knien ab. Seine Atmung ist schnell und deutlich angestrengt. Fragen kann er nur noch mit einzelnen Worten beantworten. Seine Lippen wirken leicht bläulich und er erscheint zunehmend erschöpft. Der Mann berichtet, dass er seit mehreren Jahren an einer chronischen Lungenerkrankung leidet und regelmäßig Medikamente zur Erweiterung der Atemwege verwendet."
+  }
+
+];
+
+
+/* =========================================================
+   ZUSATZAUFGABEN
+   Die Zusatzaufgabe wird unabhängig vom medizinischen Fall
+   ausgewählt.
+   ========================================================= */
+
+const zusatzfragen = [
+
+  "Wie können betriebliche Ersthelfer für andere Mitarbeiter schnell erkennbar beziehungsweise erreichbar gemacht werden?",
+
+  "Warum ist es wichtig, dass Ersthelfer ihre eigenen Grenzen kennen und bei schweren Notfällen frühzeitig den Rettungsdienst hinzuziehen?",
+
+  "Wie kann organisatorisch sichergestellt werden, dass der Rettungsdienst am Betriebseingang empfangen und schnell zum Notfallort geführt wird?",
+
+  "Welche Bedeutung hat eine geeignete Lagerung für einen Patienten mit Atemnot und welche Möglichkeiten hat ein Ersthelfer dabei?",
+
+  "Wie sollte ein Betrieb sicherstellen, dass auch in abgelegenen Arbeitsbereichen schnell Erste Hilfe geleistet und ein Notruf abgesetzt werden kann?"
+
+];
+
+
+/* =========================================================
+   8-STUNDEN-ZEITFENSTER
+   ========================================================= */
+
+const jetzt = new Date();
+
+const zeitblock =
+  Math.floor(
+    jetzt.getTime() /
+    (8 * 60 * 60 * 1000)
+  );
+
+
+/* =========================================================
+   AUSLOSUNG DES NOTFALLS
+   ========================================================= */
+
+const fallNummer =
+  zeitblock % faelle.length;
+
+const aktuellerFall =
+  faelle[fallNummer];
+
+
+/* =========================================================
+   SEPARATE AUSLOSUNG DER ZUSATZAUFGABE
+
+   Durch eine andere Berechnung wird verhindert, dass
+   eine Zusatzfrage dauerhaft an denselben Fall gekoppelt ist.
+   ========================================================= */
+
+const zusatzNummer =
+  (zeitblock * 2 + 1) % zusatzfragen.length;
+
+const aktuelleZusatzfrage =
+  zusatzfragen[zusatzNummer];
+
+
+/* =========================================================
+   AUSGABE
+   ========================================================= */
+
+document.getElementById("titel").textContent =
+  aktuellerFall.titel;
+
+document.getElementById("situation").textContent =
+  aktuellerFall.situation;
+
+document.getElementById("zusatz").textContent =
+  aktuelleZusatzfrage;
+
+</script>
+
+</body>
+</html>
