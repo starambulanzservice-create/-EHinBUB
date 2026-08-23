@@ -4,146 +4,411 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Teamarbeit Kreislauf-Notfälle</title>
+  <meta
+    name="description"
+    content="Teamarbeit zu Kreislauf-Notfällen in Bildungs- und Betreuungseinrichtungen für Kinder"
+  >
+
+  <title>Teamarbeit – Kreislauf-Notfälle</title>
 
   <style>
+    :root {
+      --star-red: #b00020;
+      --text: #222;
+      --muted: #5f6670;
+      --page: #f2f4f7;
+      --card: #ffffff;
+      --case: #f7f7f7;
+      --extra: #eef3f7;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: Arial, sans-serif;
-      background: #f2f4f7;
       margin: 0;
       padding: 20px;
-      color: #222;
+      background: var(--page);
+      color: var(--text);
+      font-family: Arial, Helvetica, sans-serif;
     }
 
     .karte {
-      max-width: 700px;
-      margin: 40px auto;
-      background: white;
+      max-width: 800px;
+      margin: 30px auto;
       padding: 30px;
+      background: var(--card);
       border-radius: 16px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      margin-bottom: 22px;
+      text-align: center;
+    }
+
+    .logo img {
+      width: min(80%, 280px);
+      height: auto;
     }
 
     h1 {
-      color: #b00020;
-      margin-bottom: 10px;
+      margin: 0 0 10px;
+      color: var(--star-red);
+      text-align: center;
+      line-height: 1.25;
     }
 
     .untertitel {
-      font-size: 1.1em;
-      margin-bottom: 25px;
-      color: #444;
+      margin: 0 0 28px;
+      color: var(--muted);
+      text-align: center;
+    }
+
+    .bereich {
+      margin-top: 24px;
+      padding: 22px;
+      border-radius: 10px;
+      line-height: 1.65;
     }
 
     .fall {
-      background: #f7f7f7;
-      padding: 22px;
-      border-radius: 10px;
-      margin-top: 20px;
-      line-height: 1.6;
+      background: var(--case);
     }
 
-    h2 {
-      margin-top: 0;
-      color: #333;
+    .zusatz {
+      background: var(--extra);
     }
 
+    h2,
     h3 {
-      margin-top: 30px;
+      margin: 0 0 12px;
     }
 
-    li {
-      margin-bottom: 10px;
-      line-height: 1.5;
+    #situation-1,
+    #situation-2,
+    #zusatzfrage,
+    #anpassungsaufgabe {
+      margin: 0;
+    }
+
+    #anpassungsaufgabe {
+      margin-top: 18px;
+    }
+
+    .anpassungs-ueberschrift {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        padding: 10px;
+      }
+
+      .karte {
+        margin: 10px auto;
+        padding: 20px;
+      }
+
+      h1 {
+        font-size: 1.65rem;
+      }
+
+      .bereich {
+        padding: 18px;
+      }
     }
   </style>
 </head>
 
 <body>
+  <main class="karte">
 
-<div class="karte">
+    <div class="logo">
+      <img
+        src="https://image.jimcdn.com/app/cms/image/transf/none/path/s4ae4e01473ee480d/image/i451db4a87a702f00/version/1762536248/image.jpg"
+        alt="STAR Ambulanz Service"
+      >
+    </div>
 
-  <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
+    <h1>Teamarbeit „Kreislauf-Notfälle“</h1>
 
-  <p class="untertitel">
-    Besprecht gemeinsam die folgende Einsatzsituation und legt euer Vorgehen fest.
-  </p>
+    <p class="untertitel">
+      Erste Hilfe in Bildungs- und Betreuungseinrichtungen für Kinder
+    </p>
 
-  <div class="fall">
+    <section class="bereich fall" aria-labelledby="fall-titel-1">
+      <h2 id="fall-titel-1">Fallsituation 1</h2>
+      <p id="situation-1"></p>
+    </section>
 
-    <h2 id="titel"></h2>
+    <section class="bereich fall" aria-labelledby="fall-titel-2">
+      <h2 id="fall-titel-2">Fallsituation 2</h2>
+      <p id="situation-2"></p>
+    </section>
 
-    <p id="situation"></p>
+    <section class="bereich zusatz" aria-labelledby="zusatz-titel">
 
-  </div>
+      <h3 id="zusatz-titel">
+        Zusatzaufgabe – Organisation der Ersten Hilfe
+      </h3>
 
-  <h3>Euer Auftrag</h3>
+      <p id="zusatzfrage"></p>
 
-  <ol>
-    <li>Beurteilt die Situation und den Zustand der betroffenen Person.</li>
-    <li>Welche Auffälligkeiten und Warnzeichen erkennt ihr?</li>
-    <li>Welche Gefahren bestehen für die betroffene Person?</li>
-    <li>Welche Erste-Hilfe-Maßnahmen führt ihr durch?</li>
-    <li>In welcher Reihenfolge handelt ihr?</li>
-    <li>Welche Informationen gebt ihr beim Notruf weiter?</li>
-    <li>Bereitet eine kurze Vorstellung eures Vorgehens für die anderen Teams vor.</li>
-  </ol>
+      <p id="anpassungsaufgabe">
+        <strong class="anpassungs-ueberschrift">
+          Anpassung an eure Verhältnisse:
+        </strong>
+        <br>
+        <span id="anpassungstext"></span>
+      </p>
 
-</div>
+    </section>
 
+  </main>
 
-<script>
+  <script>
+    /*
+      Es wird jeweils eine Fallsituation mit einem Erwachsenen
+      und eine Fallsituation mit einem Kind ausgewählt.
 
-const faelle = [
+      Die Reihenfolge der beiden Situationen wird zusätzlich
+      automatisch gewechselt.
+    */
 
-  {
-    titel: "Einsatzsituation 1",
-    situation:
-      "Ein 59-jähriger Mann sitzt während einer Besprechung plötzlich sehr unruhig auf seinem Stuhl. Er berichtet über seit etwa zehn Minuten bestehende starke Schmerzen und ein ausgeprägtes Druckgefühl hinter dem Brustbein. Die Beschwerden strahlen in seinen linken Arm und teilweise in den Unterkiefer aus. Er wirkt blass, seine Haut ist kühl und schweißig. Außerdem klagt er über Übelkeit und zunehmende Schwäche. Der Mann ist ansprechbar und kann Fragen beantworten, wirkt jedoch sehr ängstlich. Aus dem Gespräch ist bekannt, dass er wegen Bluthochdruck behandelt wird und seit vielen Jahren raucht."
-  },
+    const erwachsenenfaelle = [
+      {
+        typ: "herzinfarkt",
 
-  {
-    titel: "Einsatzsituation 2",
-    situation:
-      "Eine 71-jährige Frau unterhält sich nach einer Veranstaltung mit anderen Personen. Plötzlich fällt auf, dass sie ihre Worte nur noch undeutlich ausspricht und auf einfache Fragen teilweise unpassend antwortet. Beim Versuch zu lächeln wirkt eine Gesichtshälfte deutlich schwächer. Außerdem kann sie ihren rechten Arm nicht mehr so gut anheben wie den linken und lässt eine Tasse aus der Hand fallen. Die Beschwerden sind vor wenigen Minuten plötzlich aufgetreten. Die Frau ist wach und atmet normal. Eine Begleitperson berichtet, dass sie Medikamente gegen Bluthochdruck und Herzrhythmusstörungen einnimmt."
-  },
+        situation:
+          "In der Grundschule findet am frühen Abend ein Elternabend statt. Nachdem die meisten Eltern gegangen sind, hilft ein 54-jähriger Lehrer gemeinsam mit zwei Kollegen beim Aufräumen des Klassenraums. Während er mehrere Stühle trägt, bleibt er plötzlich stehen und stellt die Stühle ab. Er sagt, dass ihm nicht gut sei, und setzt sich auf einen Stuhl. Auf Nachfrage beschreibt er ein starkes Druck- und Engegefühl in der Mitte des Brustkorbs. Die Beschwerden ziehen in seinen linken Arm und bis in den Unterkiefer. Der Lehrer ist auffallend blass, auf seiner Stirn steht kalter Schweiß und er wirkt sehr unruhig. Er versucht die Situation herunterzuspielen und erklärt, er habe wahrscheinlich nur etwas Falsches gegessen. Nach einigen Minuten sind die Beschwerden unverändert stark. Im Gebäude befinden sich nur noch wenige Mitarbeiter, und der Haupteingang wurde bereits abgeschlossen."
+      },
+      {
+        typ: "schlaganfall",
 
-  {
-    titel: "Einsatzsituation 3",
-    situation:
-      "Ein 42-jähriger Mann entwickelt wenige Minuten nach dem Verzehr eines Lebensmittels plötzlich starken Juckreiz und eine zunehmende Rötung der Haut. Kurz darauf schwellen seine Lippen sichtbar an. Er berichtet über ein Engegefühl im Hals, zunehmende Atemnot und Schwindel. Seine Stimme klingt verändert und heiser. Der Mann wirkt zunehmend unruhig, ist blass und beginnt stark zu schwitzen. Er ist noch ansprechbar, fühlt sich jedoch sehr schwach und sagt, dass er das Gefühl habe, gleich ohnmächtig zu werden. Eine Begleitperson berichtet, dass bei ihm eine schwere Allergie bekannt sei."
-  }
+        situation:
+          "Eine 47-jährige Schulsekretärin spricht am Vormittag mit einer Lehrerin über eine Krankmeldung. Während des Gesprächs fällt der Lehrerin auf, dass die Sekretärin plötzlich undeutlich spricht und einfache Wörter nicht mehr richtig aussprechen kann. Als sie lächeln soll, bewegt sich ein Mundwinkel deutlich weniger als der andere. Die Sekretärin versucht anschließend, mit der rechten Hand eine Tasse anzuheben, kann sie jedoch nicht sicher festhalten. Die Tasse fällt auf den Schreibtisch. Die Frau wirkt verwirrt und versteht zunächst nicht, weshalb die Lehrerin Hilfe holen möchte. Sie erklärt, sie wolle nur kurz nach Hause fahren und sich hinlegen. Wann die Beschwerden genau begonnen haben, ist zunächst unklar. Vor dem Sekretariat warten mehrere Eltern und Kinder."
+      },
+      {
+        typ: "allergie",
 
-];
+        situation:
+          "Ein 43-jähriger Hausmeister arbeitet während der Unterrichtszeit auf dem Außengelände der Grundschule. Beim Leeren eines Abfallbehälters wird er von einer Wespe in den Unterarm gestochen. Zunächst klagt er nur über Schmerzen an der Einstichstelle. Wenige Minuten später bemerkt eine Kollegin, dass sich an seinem Hals und auf seinen Armen großflächige, stark juckende Quaddeln bilden. Sein Gesicht und seine Lippen schwellen sichtbar an. Der Hausmeister berichtet über Übelkeit, Schwindel und ein zunehmendes Engegefühl im Hals. Seine Atmung wird angestrengt und er kann nur noch kurze Sätze sprechen. Er wirkt blass und muss sich auf den Boden setzen, weil seine Beine ihn kaum noch tragen. In seiner Arbeitstasche soll sich wegen einer bekannten Allergie ein Notfallset befinden. Wo die Tasche abgestellt wurde, weiß jedoch niemand genau."
+      }
+    ];
 
+    const kinderfaelle = [
+      {
+        typ: "allergie",
 
-// TESTMODUS:
-// aktuell wechselt der Fall alle 30 Sekunden
+        situation:
+          "In einer ersten Klasse wird der Geburtstag eines Kindes gefeiert. Auf dem Tisch stehen verschiedene selbst gebackene Kuchen und kleine Süßigkeiten. Der siebenjährige Noah nimmt ein Stück Gebäck, dessen Zutaten nicht vollständig bekannt sind. Wenige Minuten nach dem Essen klagt er über ein Kribbeln im Mund und starken Juckreiz an den Händen. Auf seiner Haut entstehen zunehmend rote, erhabene Flecken. Seine Lippen und Augenlider schwellen sichtbar an. Noah sagt, dass sich sein Hals eng anfühle und er schlechter Luft bekomme. Kurz darauf wird er auffallend blass, wirkt kraftlos und muss sich hinsetzen. Der Klassenlehrer erinnert sich, dass bei Noah eine schwere Nahrungsmittelallergie bekannt ist. Im Schulsekretariat soll ein ärztlich verordnetes Notfallset hinterlegt sein. Das Sekretariat befindet sich jedoch in einem anderen Gebäudeteil."
+      },
+      {
+        typ: "schlaganfall",
 
-const jetzt = new Date();
+        situation:
+          "Während der Nachmittagsbetreuung sitzt die neunjährige Amelie mit anderen Kindern an einem Basteltisch. Eine Betreuungskraft bemerkt, dass dem Mädchen plötzlich die Schere aus der rechten Hand fällt. Als Amelie sie wieder aufheben möchte, kann sie den rechten Arm nicht richtig bewegen. Auf eine Frage antwortet sie mit undeutlichen und teilweise unverständlichen Worten. Ein Mundwinkel hängt sichtbar herab. Amelie wirkt verängstigt und sagt, dass sie plötzlich starke Kopfschmerzen habe. Beim Versuch aufzustehen schwankt sie und muss sich wieder hinsetzen. Die Betreuungskraft weiß, dass das Mädchen wegen einer angeborenen Herzerkrankung regelmäßig medizinisch untersucht wird. Ob diese Erkrankung mit dem aktuellen Zustand zusammenhängt, ist nicht bekannt. Die Beschwerden sind vor wenigen Minuten plötzlich aufgetreten."
+      },
+      {
+        typ: "kollaps",
 
-const zeitblock =
-  Math.floor(jetzt.getTime() / (30 * 1000));
+        situation:
+          "In der Aula einer Grundschule findet am Vormittag eine Probe für die Einschulungsfeier statt. Die achtjährige Lea steht mit ihrer Klasse bereits seit längerer Zeit auf einer engen und warmen Bühne. Sie hat am Morgen kaum gefrühstückt und berichtet einer Freundin, dass ihr schwindelig sei. Kurz darauf wird sie auffallend blass und beginnt zu schwanken. Bevor eine Lehrerin sie erreicht, sackt Lea langsam zu Boden. Für einige Sekunden reagiert sie nicht auf Ansprache. Als die Lehrerin bei ihr ist, öffnet Lea wieder die Augen und antwortet leise. Sie atmet selbstständig, wirkt aber weiterhin schwach und blass. Lea möchte sofort wieder aufstehen, weil sie die Probe nicht verpassen will. Zahlreiche andere Kinder stehen dicht gedrängt um sie herum."
+      },
+      {
+        typ: "fluessigkeitsmangel",
 
+        situation:
+          "Ein fünfjähriger Junge ist nach einem Magen-Darm-Infekt erstmals wieder in der Kita. Am Vormittag beteiligt er sich zunächst am Spielen, wirkt aber ruhiger als sonst. Beim Mittagessen möchte er weder essen noch trinken. Eine Erzieherin bemerkt, dass seine Lippen trocken sind und er ungewöhnlich müde wirkt. Als die Gruppe später nach draußen gehen möchte, kann der Junge kaum noch selbstständig aufstehen. Er ist sehr blass, seine Hände fühlen sich kühl an und er reagiert nur verzögert auf Fragen. Die Erzieherin erfährt bei einem Telefonat mit den Eltern, dass das Kind am Vortag mehrfach erbrochen und Durchfall gehabt habe. Wie viel es seitdem getrunken hat, ist unklar. Sein Zustand verschlechtert sich innerhalb kurzer Zeit weiter."
+      },
+      {
+        typ: "hitze",
 
-// Fall auswählen
+        situation:
+          "An einem sehr warmen Sommertag findet auf dem Sportplatz der Grundschule ein Spielefest statt. Der siebenjährige Paul nimmt nacheinander an mehreren Laufspielen teil. Obwohl er bereits über Kopfschmerzen geklagt hat, möchte er weiter mitmachen. Eine Lehrerin bemerkt später, dass Paul unsicher geht und auf Fragen ungewöhnlich gereizt reagiert. Sein Kopf ist hochrot, seine Haut fühlt sich auffallend heiß und trocken an. Er klagt über Übelkeit und starke Kopfschmerzen. Kurz darauf setzt er sich auf den Boden, wirkt zunehmend verwirrt und weiß nicht mehr, an welcher Station seine Klasse gerade teilnehmen soll. Auf dem Sportplatz gibt es nur wenig Schatten. Die Trinkflasche des Kindes ist nahezu unberührt."
+      }
+    ];
 
-const fallNummer =
-  zeitblock % faelle.length;
+    const zusatzaufgaben = [
+      {
+        passendZu:
+          [
+            "allergie"
+          ],
 
-const aktuellerFall =
-  faelle[fallNummer];
+        frage:
+          "Wie müssen ärztlich verordnete Notfallmedikamente bei bekannten schweren Allergien aufbewahrt und organisatorisch eingebunden werden, damit sie geschützt, eindeutig zugeordnet und im Notfall schnell verfügbar sind?",
 
+        anpassung:
+          "Wählt ein konkretes Kind oder einen realistisch vorstellbaren Fall aus eurer eigenen Kita, Grundschule oder Betreuungseinrichtung. Beschreibt den Aufbewahrungsort des Notfallsets, die Zugänglichkeit während des normalen Betriebs und bei Ausflügen sowie die erforderlichen ärztlichen Anweisungen und Absprachen. Prüft, ob alle zuständigen Mitarbeiter, Vertretungskräfte und neuen Kollegen die Regelung kennen."
+      },
+      {
+        passendZu:
+          [
+            "herzinfarkt",
+            "schlaganfall",
+            "allergie",
+            "kollaps",
+            "fluessigkeitsmangel",
+            "hitze"
+          ],
 
-// Fall anzeigen
+        frage:
+          "Welche Aufgaben können weitere Mitarbeiter übernehmen, während ein Ersthelfer eine Person mit einem schweren Kreislaufnotfall versorgt? Berücksichtigt insbesondere Notruf, Einweisung des Rettungsdienstes, Betreuung der übrigen Kinder und Freihalten des Notfallbereichs.",
 
-document.getElementById("titel").textContent =
-  aktuellerFall.titel;
+        anpassung:
+          "Wählt einen konkreten Ort in eurer eigenen Einrichtung, an dem ein schwerer Kreislaufnotfall auftreten könnte. Beschreibt, welcher Mitarbeiter die betroffene Person versorgen, den Notruf absetzen, den Rettungsdienst einweisen und die übrigen Kinder betreuen würde. Prüft, welche Schwierigkeiten außerhalb der üblichen Betriebszeiten oder bei geringer Personalbesetzung entstehen könnten."
+      },
+      {
+        passendZu:
+          [
+            "herzinfarkt",
+            "schlaganfall",
+            "allergie",
+            "kollaps",
+            "fluessigkeitsmangel",
+            "hitze"
+          ],
 
-document.getElementById("situation").textContent =
-  aktuellerFall.situation;
+        frage:
+          "Wie muss die Alarmierung in einer Kita oder Grundschule organisiert sein, damit Ersthelfer und Rettungsdienst auch in abgelegenen oder schwer zugänglichen Bereichen schnell erreicht beziehungsweise eingewiesen werden können?",
 
-</script>
+        anpassung:
+          "Wählt einen konkreten, möglichst abgelegenen oder schwer zugänglichen Bereich eurer eigenen Einrichtung, beispielsweise das Außengelände, den Sportplatz, die Aula oder einen Nebenraum. Beschreibt den tatsächlichen Ablauf vom Erkennen des Notfalls über die interne Alarmierung und den Notruf bis zur Einweisung des Rettungsdienstes. Benennt mögliche Verzögerungen und Verbesserungsmöglichkeiten."
+      },
+      {
+        passendZu:
+          [
+            "schlaganfall",
+            "allergie"
+          ],
 
+        frage:
+          "Welche organisatorischen Absprachen sind erforderlich, wenn bei einem Kind oder einem Mitarbeiter eine Erkrankung bekannt ist, die zu einem schweren Kreislaufnotfall führen kann? Wer muss welche Informationen kennen und wie wird das Vorgehen festgelegt?",
+
+        anpassung:
+          "Übertragt die Aufgabe auf eine konkrete oder realistisch vorstellbare Person aus eurer eigenen Einrichtung. Beschreibt, welche Informationen, Notfallpläne oder ärztlichen Anweisungen vorliegen müssten und welche Mitarbeiter davon Kenntnis benötigen. Berücksichtigt auch Vertretungskräfte, neue Kollegen, Ausflüge und Veranstaltungen außerhalb des normalen Betriebs."
+      },
+      {
+        passendZu:
+          [
+            "kollaps",
+            "fluessigkeitsmangel",
+            "hitze"
+          ],
+
+        frage:
+          "Wie können Veranstaltungen, Ausflüge und Aktivitäten bei warmem Wetter so organisiert werden, dass Flüssigkeitsmangel, Überhitzung und Kreislaufprobleme möglichst früh erkannt oder vermieden werden?",
+
+        anpassung:
+          "Wählt eine konkrete Veranstaltung oder Aktivität aus eurer eigenen Einrichtung, beispielsweise ein Sportfest, einen Ausflug oder einen längeren Aufenthalt auf dem Außengelände. Beschreibt die vorhandenen Trinkmöglichkeiten, Schattenplätze, Pausenregelungen und Zuständigkeiten. Prüft, woran besonders gefährdete Kinder erkannt werden könnten und welche Verbesserungen sinnvoll wären."
+      }
+    ];
+
+    /*
+      Ein weltweit einheitliches Zeitfenster von fünf Stunden.
+      Alle Geräte erhalten innerhalb desselben Zeitfensters
+      dieselbe Kombination.
+    */
+
+    const fuenfStunden =
+      5 * 60 * 60 * 1000;
+
+    const zeitfenster =
+      Math.floor(Date.now() / fuenfStunden);
+
+    /*
+      Deterministische Zufallsfunktion:
+      Die Auswahl bleibt innerhalb eines Zeitfensters stabil.
+    */
+
+    function pseudoZufall(seed) {
+      let wert = seed >>> 0;
+
+      wert ^= wert << 13;
+      wert ^= wert >>> 17;
+      wert ^= wert << 5;
+
+      return wert >>> 0;
+    }
+
+    /*
+      Auswahl eines Erwachsenenfalls und eines Kinderfalls.
+    */
+
+    const erwachsenenIndex =
+      pseudoZufall(zeitfenster + 0x31a7c5) %
+      erwachsenenfaelle.length;
+
+    const kinderIndex =
+      pseudoZufall(zeitfenster + 0x82d4e9) %
+      kinderfaelle.length;
+
+    const erwachsenenFall =
+      erwachsenenfaelle[erwachsenenIndex];
+
+    const kinderFall =
+      kinderfaelle[kinderIndex];
+
+    /*
+      Auch die Reihenfolge wird zufällig festgelegt.
+    */
+
+    const reihenfolgeWechseln =
+      pseudoZufall(zeitfenster + 0x4f19b3) %
+      2 === 1;
+
+    let ersterFall;
+    let zweiterFall;
+
+    if (reihenfolgeWechseln) {
+      ersterFall = kinderFall;
+      zweiterFall = erwachsenenFall;
+    } else {
+      ersterFall = erwachsenenFall;
+      zweiterFall = kinderFall;
+    }
+
+    /*
+      Eine Zusatzaufgabe gilt als passend, wenn mindestens eine
+      der beiden Fallsituationen zu ihrem Themenbereich gehört.
+
+      Allgemeine Organisationsaufgaben passen zu allen Fällen.
+    */
+
+    const passendeZusatzaufgaben =
+      zusatzaufgaben.filter(function(aufgabe) {
+        return (
+          aufgabe.passendZu.includes(ersterFall.typ) ||
+          aufgabe.passendZu.includes(zweiterFall.typ)
+        );
+      });
+
+    const zusatzIndex =
+      pseudoZufall(zeitfenster + 0xc6e2a7) %
+      passendeZusatzaufgaben.length;
+
+    const aktuelleZusatzaufgabe =
+      passendeZusatzaufgaben[zusatzIndex];
+
+    /*
+      Ausgabe auf der Webseite
+    */
+
+    document.getElementById("situation-1").textContent =
+      ersterFall.situation;
+
+    document.getElementById("situation-2").textContent =
+      zweiterFall.situation;
+
+    document.getElementById("zusatzfrage").textContent =
+      aktuelleZusatzaufgabe.frage;
+
+    document.getElementById("anpassungstext").textContent =
+      aktuelleZusatzaufgabe.anpassung;
+  </script>
 </body>
 </html>
