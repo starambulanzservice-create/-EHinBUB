@@ -6,7 +6,7 @@
 
   <meta
     name="description"
-    content="Gruppenarbeit zu Atemstörungen in Bildungs- und Betreuungseinrichtungen für Kinder"
+    content="Teamarbeit zu Atemstörungen in Bildungs- und Betreuungseinrichtungen für Kinder"
   >
 
   <title>Teamarbeit – Störungen der Atmung</title>
@@ -20,8 +20,6 @@
       --card: #ffffff;
       --case: #f7f7f7;
       --extra: #eef3f7;
-      --transfer: #ffffff;
-      --transfer-line: #b7c6d4;
     }
 
     * {
@@ -72,7 +70,7 @@
       margin-top: 24px;
       padding: 22px;
       border-radius: 10px;
-      line-height: 1.6;
+      line-height: 1.65;
     }
 
     .fall {
@@ -89,25 +87,18 @@
     }
 
     #situation,
-    #zusatzfrage {
+    #zusatzfrage,
+    #transferaufgabe {
       margin: 0;
     }
 
-    .einrichtungstransfer {
-      margin-top: 20px;
-      padding: 18px;
-      background: var(--transfer);
-      border-left: 5px solid var(--transfer-line);
-      border-radius: 8px;
+    #transferaufgabe {
+      margin-top: 18px;
     }
 
-    .einrichtungstransfer h4 {
-      margin: 0 0 8px;
-      color: var(--star-red);
-    }
-
-    .einrichtungstransfer p {
-      margin: 0;
+    .transfer-ueberschrift {
+      display: inline-block;
+      margin-bottom: 5px;
     }
 
     .hinweis {
@@ -167,10 +158,13 @@
 
       <p id="zusatzfrage"></p>
 
-      <div class="einrichtungstransfer">
-        <h4>Verpflichtender Einrichtungstransfer</h4>
-        <p id="transferaufgabe"></p>
-      </div>
+      <p id="transferaufgabe">
+        <strong class="transfer-ueberschrift">
+          Verpflichtender Einrichtungstransfer:
+        </strong>
+        <br>
+        <span id="transfertext"></span>
+      </p>
 
     </section>
 
@@ -181,34 +175,56 @@
   </main>
 
   <script>
+    /*
+      Die Zahlen unter "passendeZusatzaufgaben" verweisen auf die
+      Zusatzaufgaben im zweiten Datenblock.
+
+      Dadurch wird nicht irgendeine Zusatzaufgabe ausgewählt,
+      sondern nur eine Aufgabe, die inhaltlich zur Fallsituation passt.
+    */
+
     const faelle = [
       {
         situation:
-          "Ein fünfjähriges Mädchen hat bei kühlem Wetter auf dem Außengelände Fangen gespielt. Anschließend setzt es sich auf eine Bank und bekommt zunehmend Schwierigkeiten beim Atmen. Das Mädchen stützt seine Arme auf den Oberschenkeln ab und kann nur noch kurze Sätze sprechen. Seine Atmung ist beschleunigt; beim Ausatmen ist ein pfeifendes Geräusch hörbar. Eine Erzieherin weiß, dass das Kind gelegentlich ein ärztlich verordnetes Spray benötigt."
+          "Es ist ein kühler und windiger Vormittag in der Kita. Die Kinder der Vorschulgruppe spielen seit ungefähr zwanzig Minuten Fangen auf dem Außengelände. Eine Erzieherin bemerkt, dass die fünfjährige Mia plötzlich nicht mehr mit den anderen Kindern läuft. Das Mädchen sitzt auf einer Bank, beugt den Oberkörper nach vorn und stützt die Arme auf den Oberschenkeln ab. Auf die Frage, was los sei, antwortet Mia nur mit wenigen Worten und muss dazwischen immer wieder nach Luft holen. Ihre Atmung ist deutlich beschleunigt. Besonders beim Ausatmen ist ein pfeifendes Geräusch zu hören. Mia wirkt zunehmend ängstlich und beginnt zu weinen. Eine Kollegin erinnert sich, dass die Eltern bei der Aufnahme von einem ärztlich verordneten Spray gesprochen haben. Wo sich das Medikament befindet und welche Absprachen dazu getroffen wurden, weiß sie jedoch nicht.",
+
+        passendeZusatzaufgaben: [0, 1, 2, 3, 4]
       },
       {
         situation:
-          "Ein vierjähriger Junge isst in der Kita ein Stück Rohkost. Plötzlich greift er sich an den Hals, steht hektisch auf und wirkt panisch. Er kann nicht sprechen und trotz sichtbarer Anstrengung nicht wirksam husten. Seine Atmung ist stark behindert und seine Lippen verfärben sich zunehmend bläulich. Nach kurzer Zeit werden seine Bewegungen schwächer."
+          "In der Kindergartengruppe findet gerade das gemeinsame Mittagessen statt. Der vierjährige Ben sitzt mit mehreren Kindern und zwei Erziehern am Tisch und isst ein Stück rohe Möhre. Während er noch kaut, versucht er einem anderen Kind etwas zu erzählen. Plötzlich verstummt er, springt von seinem Stuhl auf und greift sich mit beiden Händen an den Hals. Einer der Erzieher spricht ihn an, Ben kann jedoch nicht antworten. Er öffnet wiederholt den Mund, bringt aber keinen Ton hervor. Auch kräftiges Husten gelingt ihm nicht. Sein Gesicht wirkt zunächst stark gerötet und verfärbt sich anschließend zunehmend bläulich. Ben wird panisch, läuft einige Schritte durch den Raum und verliert dabei sichtbar an Kraft. Die übrigen Kinder beobachten erschrocken das Geschehen und beginnen durcheinanderzurufen.",
+
+        passendeZusatzaufgaben: [1, 4]
       },
       {
         situation:
-          "Eine 41-jährige Erzieherin beaufsichtigt die Kinder auf dem Außengelände. Nach körperlicher Anstrengung bleibt sie stehen, beugt den Oberkörper nach vorn und stützt die Hände auf den Knien ab. Sie kann nur noch einzelne Worte sprechen. Beim Ausatmen ist ein deutliches Pfeifen zu hören. Die Erzieherin zeigt auf ihre Jackentasche und erklärt mit Mühe, dass sich dort ihr ärztlich verordnetes Notfallspray befindet."
+          "Eine 41-jährige Erzieherin beaufsichtigt gemeinsam mit einer Kollegin eine Kindergruppe auf dem Außengelände. Nachdem ein Kind gestürzt ist, läuft sie zügig über den Spielplatz, um nach ihm zu sehen. Kurz darauf bleibt sie stehen und erklärt, dass sie plötzlich schlecht Luft bekomme. Sie setzt sich auf eine niedrige Mauer, beugt den Oberkörper nach vorn und stützt ihre Hände auf den Knien ab. Ihre Atmung ist schnell und deutlich angestrengt. Beim Ausatmen ist ein pfeifendes Geräusch zu hören. Fragen kann sie nur noch mit einzelnen Worten beantworten. Sie zeigt auf ihre Jackentasche und sagt mit Mühe, dass sich dort ihr ärztlich verordnetes Spray befinde. Die zweite Erzieherin steht nun gleichzeitig vor der Aufgabe, ihrer Kollegin zu helfen und die auf dem Außengelände verteilten Kinder weiter zu beaufsichtigen.",
+
+        passendeZusatzaufgaben: [1, 3, 4]
       },
       {
         situation:
-          "Ein 56-jähriger Lehrer unterhält sich während der Pause beim Essen mit Kollegen. Plötzlich verstummt er, greift sich an den Hals und steht vom Tisch auf. Er kann eine Frage nicht beantworten und hustet nur noch schwach und geräuschlos. Sein Gesicht wirkt zunehmend bläulich und er verliert sichtbar an Kraft."
+          "Während der großen Pause sitzen mehrere Lehrer im Lehrerzimmer zusammen. Ein 56-jähriger Kollege isst ein belegtes Brötchen und unterhält sich dabei angeregt mit den anderen. Mitten im Satz verstummt er plötzlich, steht hastig auf und greift sich an den Hals. Eine Kollegin fragt ihn, ob er sich verschluckt habe. Er kann nicht antworten und nickt nur hektisch. Obwohl er offensichtlich zu husten versucht, ist kaum ein Geräusch zu hören. Seine Atmung ist stark behindert, sein Gesicht verfärbt sich zunehmend bläulich und seine Bewegungen werden schwächer. Im Flur warten gleichzeitig mehrere Grundschulkinder auf das Ende der Pause. Einer der anwesenden Lehrer verlässt den Raum, weiß aber zunächst nicht, von welchem Telefon aus er den Notruf absetzen und an welchem Eingang der Rettungsdienst empfangen werden soll.",
+
+        passendeZusatzaufgaben: [1, 4]
       },
       {
         situation:
-          "Ein dreijähriges Kind hatte am Morgen bereits Schnupfen und eine heisere Stimme. Während der Ruhezeit wacht es plötzlich auf, hustet auffallend bellend und atmet deutlich angestrengt. Besonders beim Einatmen ist ein raues, ziehendes Geräusch hörbar. Das Kind ist sehr ängstlich, weint und möchte auf den Arm genommen werden. Durch die Aufregung scheint sich die Atemnot zu verstärken."
+          "Ein dreijähriger Junge besucht trotz eines leichten Schnupfens und einer heiseren Stimme die Kita. Am Vormittag spielt er weitgehend unauffällig. Während der Ruhezeit wird er plötzlich wach und beginnt laut und auffällig bellend zu husten. Eine Erzieherin geht zu seinem Bett und bemerkt, dass seine Atmung deutlich angestrengt ist. Besonders beim Einatmen hört sie ein raues, ziehendes Geräusch. Der Junge erschrickt über seine Beschwerden, beginnt heftig zu weinen und möchte sofort auf den Arm genommen werden. Mit zunehmender Aufregung scheint sich seine Atmung weiter zu verschlechtern. Die Erzieherin ist mit mehreren ruhenden Kindern allein im Raum. Ihre Kollegin befindet sich mit einer anderen Gruppe auf dem Außengelände und ist nicht unmittelbar erreichbar.",
+
+        passendeZusatzaufgaben: [1, 2, 4]
       },
       {
         situation:
-          "Ein sechsjähriges Mädchen trinkt während eines Sommerfestes im Schulgarten aus einer geöffneten Saftflasche. Plötzlich schreit es auf und zeigt in seinen Mund. Es klagt über starke Schmerzen im Hals und Schwierigkeiten beim Schlucken. Kurz darauf nimmt die Schwellung im Mund- und Rachenraum sichtbar zu. Das Kind wird panisch und bekommt zunehmend schlechter Luft. Ob eine Allergie bekannt ist, wissen die anwesenden Mitarbeiter nicht."
+          "Auf dem Außengelände einer Grundschule findet an einem warmen Sommertag ein Schulfest statt. Die sechsjährige Lina spielt mit anderen Kindern in der Nähe eines Getränkestandes. Ihre Saftflasche steht eine Zeit lang geöffnet auf einem Tisch. Als Lina später daraus trinkt, schreit sie plötzlich auf, lässt die Flasche fallen und zeigt in ihren Mund. Sie berichtet über einen starken Schmerz im Hals und sagt, dass sie kaum schlucken könne. Innerhalb kurzer Zeit schwillt ihre Zunge sichtbar an. Lina bekommt zunehmend schlechter Luft, wirkt panisch und kann nur noch einzelne Worte sprechen. Eine Lehrerin vermutet, dass sich ein Insekt in der Flasche befunden haben könnte. Ob bei Lina eine Insektengiftallergie bekannt ist oder ein Notfallmedikament hinterlegt wurde, wissen die unmittelbar anwesenden Mitarbeiter nicht. Wegen des Schulfestes sind mehrere Zugänge zum Gelände durch Tische und Stände verstellt.",
+
+        passendeZusatzaufgaben: [0, 1, 2, 3, 4]
       },
       {
         situation:
-          "Ein 38-jähriger Erzieher trinkt während einer Pause im Außengelände aus einer geöffneten Getränkedose. Unmittelbar danach verspürt er einen starken Stich und Schmerzen im Mund- und Rachenraum. Seine Zunge schwillt sichtbar an, das Schlucken fällt ihm zunehmend schwer und seine Atmung wird angestrengt. Er ist sehr unruhig und kann nur noch kurze Sätze sprechen."
+          "Ein 38-jähriger Erzieher beaufsichtigt mit einer Kollegin das Sommerfest einer Kita. Während einer kurzen Pause trinkt er aus einer geöffneten Getränkedose, die zuvor auf einem Tisch im Außengelände gestanden hat. Unmittelbar danach zuckt er zusammen und klagt über einen starken Stich und zunehmende Schmerzen im Mund. Zunächst versucht er, das Geschehen herunterzuspielen und weiterzuarbeiten. Wenige Minuten später fällt seiner Kollegin auf, dass seine Zunge sichtbar angeschwollen ist und ihm das Schlucken schwerfällt. Seine Atmung wird zunehmend angestrengt und er kann nur noch kurze Sätze sprechen. Der Erzieher wirkt sehr unruhig. Ob bei ihm eine Allergie bekannt ist, können die Kollegen nicht sicher sagen. Gleichzeitig befinden sich zahlreiche Kinder und Eltern auf dem unübersichtlichen Außengelände, und die Zufahrt zum Haupteingang ist durch parkende Fahrzeuge teilweise blockiert.",
+
+        passendeZusatzaufgaben: [1, 3, 4]
       }
     ];
 
@@ -218,35 +234,35 @@
           "Wie müssen ärztlich verordnete Notfallmedikamente eines Kindes aufbewahrt und organisatorisch eingebunden werden, damit sie vor dem Zugriff anderer Kinder geschützt, im Notfall aber schnell verfügbar und eindeutig zugeordnet sind?",
 
         transfer:
-          "Wählt ein konkretes Kind oder ein realistisches Beispiel aus eurer eigenen Kita, Grundschule oder Betreuungseinrichtung, bei dem ein Notfallmedikament benötigt werden könnte. Beschreibt den vorgesehenen Aufbewahrungsort, die Zugänglichkeit im Notfall, die eindeutige Zuordnung und die erforderlichen Absprachen. Benennt auch möglichen Verbesserungsbedarf."
+          "Wählt ein konkretes Kind oder ein realistisches Beispiel aus eurer eigenen Kita, Grundschule oder Betreuungseinrichtung, bei dem ein Notfallmedikament benötigt werden könnte. Beschreibt den vorgesehenen Aufbewahrungsort, die Zugänglichkeit im Notfall, die eindeutige Zuordnung und die erforderlichen Absprachen. Prüft außerdem, ob Vertretungskräfte und neue Mitarbeiter die Regelung kennen, und benennt möglichen Verbesserungsbedarf."
       },
       {
         frage:
           "Welche Aufgaben können weitere Mitarbeiter übernehmen, während ein Ersthelfer die betroffene Person versorgt – insbesondere hinsichtlich Notruf, Einweisung des Rettungsdienstes, Betreuung der übrigen Kinder und Information der Erziehungsberechtigten?",
 
         transfer:
-          "Wählt einen konkreten Ort in eurer eigenen Kita, Grundschule oder Betreuungseinrichtung. Beschreibt anhand eines dort auftretenden Atemnotfalls, welche Mitarbeiter welche Aufgaben übernehmen würden. Berücksichtigt dabei auch die Betreuung der übrigen Kinder und benennt mögliche organisatorische Lücken."
+          "Wählt einen konkreten Ort in eurer eigenen Kita, Grundschule oder Betreuungseinrichtung, an dem eine schwere Atemstörung auftreten könnte. Beschreibt, welcher Mitarbeiter die betroffene Person versorgen, den Notruf absetzen, den Rettungsdienst einweisen, die übrigen Kinder betreuen und die Erziehungsberechtigten informieren würde. Benennt mögliche organisatorische Lücken."
       },
       {
         frage:
           "Welche organisatorischen Absprachen sind erforderlich, wenn bei einem Kind eine Atemwegserkrankung oder eine schwere Allergie bekannt ist? Wer muss welche Informationen kennen und wie wird das Vorgehen im Notfall festgelegt?",
 
         transfer:
-          "Übertragt die Aufgabe auf ein konkretes oder realistisch vorstellbares Kind aus eurer eigenen Einrichtung. Beschreibt, welche Informationen vorliegen müssten, welche Mitarbeiter das vereinbarte Vorgehen kennen sollten und wie Vertretungen, neue Kollegen oder Begleitpersonen bei Ausflügen einbezogen werden. Benennt auch möglichen Verbesserungsbedarf."
+          "Übertragt die Aufgabe auf ein konkretes oder realistisch vorstellbares Kind aus eurer eigenen Einrichtung. Beschreibt, welche Informationen und schriftlichen Absprachen vorliegen müssten, welche Mitarbeiter das vereinbarte Vorgehen kennen sollten und wie Vertretungskräfte, neue Kollegen oder Begleitpersonen bei Ausflügen einbezogen werden. Benennt möglichen Verbesserungsbedarf."
       },
       {
         frage:
-          "Wie muss die Erste Hilfe bei Ausflügen, Wandertagen und Aufenthalten außerhalb des Einrichtungsgeländes organisiert sein? Berücksichtigt Erreichbarkeit, Notrufmöglichkeit, Erste-Hilfe-Material, Notfallmedikamente und die Zahl der anwesenden Ersthelfer.",
+          "Wie muss die Erste Hilfe bei Ausflügen, Wandertagen, Festen und Aufenthalten außerhalb des Einrichtungsgeländes organisiert sein? Berücksichtigt Erreichbarkeit, Notrufmöglichkeit, Erste-Hilfe-Material, Notfallmedikamente und die Zahl der anwesenden Ersthelfer.",
 
         transfer:
-          "Wählt einen tatsächlich durchgeführten oder konkret geplanten Ausflug eurer eigenen Kita, Grundschule oder Betreuungseinrichtung. Beschreibt, wie bei einer plötzlich auftretenden schweren Atemstörung gehandelt würde, wer den Notruf absetzt, wie der Rettungsdienst den Aufenthaltsort findet und wie die übrigen Kinder beaufsichtigt werden. Benennt mögliche Verbesserungen."
+          "Wählt einen tatsächlich durchgeführten oder konkret geplanten Ausflug, Wandertag oder ein Fest eurer eigenen Einrichtung. Beschreibt, wie bei einer plötzlich auftretenden schweren Atemstörung gehandelt würde, wer den Notruf absetzt, wie der Rettungsdienst den Aufenthaltsort findet und wie die übrigen Kinder beaufsichtigt werden. Benennt mögliche Verbesserungen."
       },
       {
         frage:
-          "Wie muss die Alarmierung in einer Kita oder Grundschule organisiert sein, damit Ersthelfer und Rettungsdienst auch aus abgelegenen Bereichen wie Außengelände, Sporthalle oder Nebenräumen schnell erreicht beziehungsweise eingewiesen werden können?",
+          "Wie muss die Alarmierung in einer Kita oder Grundschule organisiert sein, damit Ersthelfer und Rettungsdienst auch aus abgelegenen oder schwer zugänglichen Bereichen schnell erreicht beziehungsweise eingewiesen werden können?",
 
         transfer:
-          "Wählt einen konkreten, möglichst abgelegenen Bereich eurer eigenen Einrichtung. Beschreibt den tatsächlichen Weg vom Erkennen des Notfalls über die interne Alarmierung und den Notruf bis zur Einweisung des Rettungsdienstes. Prüft, wo Zeit verloren gehen könnte und welche organisatorischen Verbesserungen sinnvoll wären."
+          "Wählt einen konkreten, möglichst abgelegenen oder schwer zugänglichen Bereich eurer eigenen Einrichtung, beispielsweise das Außengelände, die Sporthalle oder einen Nebenraum. Beschreibt den tatsächlichen Ablauf vom Erkennen des Notfalls über die interne Alarmierung und den Notruf bis zur Einweisung des Rettungsdienstes. Prüft, wo Zeit verloren gehen könnte und welche Verbesserungen sinnvoll wären."
       }
     ];
 
@@ -264,7 +280,7 @@
 
     /*
       Deterministische Zufallsfunktion:
-      Die Auswahl bleibt innerhalb des Zeitfensters stabil.
+      Die Auswahl bleibt innerhalb eines Zeitfensters stabil.
     */
 
     function pseudoZufall(seed) {
@@ -278,20 +294,33 @@
     }
 
     /*
-      Fallsituation und Zusatzaufgabe werden unabhängig
-      voneinander ausgewählt.
+      Die Fallsituation wechselt in jedem neuen Fünf-Stunden-Fenster.
+      Der Faktor 3 verhindert eine einfache Reihenfolge.
+      Da 3 und 7 teilerfremd sind, erscheinen alle sieben Fälle,
+      bevor sich die Reihenfolge wiederholt.
     */
 
     const fallIndex =
-      pseudoZufall(zeitfenster + 0x51f15e) %
+      (zeitfenster * 3 + 2) %
       faelle.length;
-
-    const zusatzIndex =
-      pseudoZufall(zeitfenster + 0xa7d3c9) %
-      zusatzaufgaben.length;
 
     const aktuellerFall =
       faelle[fallIndex];
+
+    /*
+      Es wird nur aus den Zusatzaufgaben ausgewählt,
+      die inhaltlich zur aktuellen Fallsituation passen.
+    */
+
+    const passendeAufgaben =
+      aktuellerFall.passendeZusatzaufgaben;
+
+    const positionInAuswahl =
+      pseudoZufall(zeitfenster + fallIndex + 0xa7d3c9) %
+      passendeAufgaben.length;
+
+    const zusatzIndex =
+      passendeAufgaben[positionInAuswahl];
 
     const aktuelleZusatzaufgabe =
       zusatzaufgaben[zusatzIndex];
@@ -306,7 +335,7 @@
     document.getElementById("zusatzfrage").textContent =
       aktuelleZusatzaufgabe.frage;
 
-    document.getElementById("transferaufgabe").textContent =
+    document.getElementById("transfertext").textContent =
       aktuelleZusatzaufgabe.transfer;
   </script>
 </body>
